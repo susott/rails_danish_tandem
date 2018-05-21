@@ -11,4 +11,3 @@ Suse = User.new(name: "suse", username: "susott", age:31, gender: "female",
   description: "I speak fairly good Danish, I think, but still not enough for danish employers... Now I have given up!",
   dedication: "occassionally", password: "123456")
 Suse.save
-

@@ -1,0 +1,27 @@
+.btn-blue {
+  padding: 10px 20px;
+  border-radius: 100px;
+  background-color: $blue;
+  opacity: 0.8;
+  color: $white;
+}
+
+.btn-blue:hover {
+  opacity: 1;
+  text-decoration: none;
+  color: $white;
+}
+
+.btn-basic {
+  padding: 10px 20px;
+  border-radius: 100px;
+  background-color: $yellow;
+  opacity: 0.8;
+  color: $red-brown;
+}
+
+.btn-basic:hover {
+  opacity: 1;
+  text-decoration: none;
+  color: $red-brown;
+}
