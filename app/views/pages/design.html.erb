@@ -1,1 +1,27 @@
-<h1>Design page </h1>
+<div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url(<%= image_path("coffee_people.jpeg") %>);">
+  <div class="banner-content">
+    <h1>Find a language friend</h1>
+    <p>The language exchange site for Denmark</p>
+    <%= link_to "Home", root_path, class:"btn-basic"%>
+  </div>
+</div>
+
+<br><br><br>
+
+<%= link_to "Home", root_path, class:"btn-basic"%>
+<%= link_to "Design", pages_design_path, class:"btn-blue"%>
+
+<div class="container">
+  <div class="row">
+<div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://kitt.lewagon.com/placeholder/cities/shanghai');">
+  <div class="card-category">Popular</div>
+  <div class="card-description">
+    <h2>Le Wagon Shanghai</h2>
+    <p>Very cool city, the best</p>
+  </div>
+  <img class="card-user" src="https://kitt.lewagon.com/placeholder/users/tgenaitay">
+  <a class="card-link" href="#" ></a>
+</div>
+</div> <!-- end row -->
+</div>
+
