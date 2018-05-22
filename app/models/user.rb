@@ -8,7 +8,7 @@ class User < ApplicationRecord
   validates :name, presence: true
   validates :username, presence: true, uniqueness: true
   validates :city, presence: true
-  validates :description, presence: true, length: { minimum: 100 }
+  validates :description, presence: true, length: { minimum: 50 }
   validates :dedication, presence: true, inclusion: { in: ["occassionally", "once per month", "once per week", "more often"] }
   validates :gender, presence: true, inclusion: { in: ["female", "male", "other"] }
   validates :age, numericality: { only_integer: true, greater_than: 0, less_than: 110 }
