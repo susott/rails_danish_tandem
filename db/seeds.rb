@@ -7,7 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 so = User.new(name: "Susanne", username: "sus", age:2, gender: "female",
-  email: "test@gmail.com", address: "Copenhagen",
+  email: "test@gmail.com", city: "Copenhagen",
   description: "I speak fairly good Danish, but there is still room for improvement. I could imagine learning danish with a tandem partner.",
   dedication: "occassionally", password: "123456")
 so.save
