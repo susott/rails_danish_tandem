@@ -5,5 +5,9 @@ class PagesController < ApplicationController
   end
 
   def design
+    @user = current_user
+  end
+
+  def about
   end
 end
