@@ -6,9 +6,8 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-Suse = User.new(name: "suse", username: "susott", age:31, gender: "female",
-  email: "susott@gmx.de", address: "Copenhagen",
-  description: "I speak fairly good Danish, I think, but still not enough for danish employers... Now I have given up!",
+Suse = User.new(name: "susott", username: "susott", age:2, gender: "female",
+  email: "test@gmail.com", address: "Copenhagen",
+  description: "I speak fairly good Danish, but there is still room for improvement. I could imagine learning danish with a tandem partner.",
   dedication: "occassionally", password: "123456")
 Suse.save
-
