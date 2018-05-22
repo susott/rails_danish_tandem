@@ -7,4 +7,7 @@ class PagesController < ApplicationController
   def design
     @user = current_user
   end
+
+  def about
+  end
 end

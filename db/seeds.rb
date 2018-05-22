@@ -18,7 +18,6 @@ spanish = Language.create(name: "Spanish")
 english = Language.create(name: "English")
 german = Language.create(name: "German")
 
-
 lskill1 = LanguageSkill.new(score: 5)
 lskill1.user = so
 lskill1.language = italian

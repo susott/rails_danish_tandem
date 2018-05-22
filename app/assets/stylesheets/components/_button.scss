@@ -1,27 +1,27 @@
 .btn-blue {
-  padding: 10px 20px;
+  padding: 12px 20px;
   border-radius: 100px;
   background-color: $blue;
-  opacity: 0.8;
+  opacity: 0.85;
   color: $white;
-}
-
-.btn-blue:hover {
-  opacity: 1;
-  text-decoration: none;
-  color: $white;
+  font-size: 1.3em;
+  &:hover {
+    opacity: 1;
+    text-decoration: none;
+    color: $white;
+  }
 }
 
 .btn-basic {
-  padding: 10px 20px;
+  padding: 12px 20px;
   border-radius: 100px;
   background-color: $yellow;
-  opacity: 0.8;
+  opacity: 0.85;
   color: $red-brown;
-}
-
-.btn-basic:hover {
-  opacity: 1;
-  text-decoration: none;
-  color: $red-brown;
+  font-size: 1.3em;
+  &:hover {
+    opacity: 1;
+    text-decoration: none;
+    color: $red-brown;
+  }
 }
