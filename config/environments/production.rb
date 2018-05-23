@@ -1,7 +1,7 @@
 Rails.application.configure do
   config.action_mailer.default_url_options = { host: "http://TODO_PUT_YOUR_DOMAIN_HERE" }
   # Verifies that versions and hashed value of the package contents in the project's package.json
-config.webpacker.check_yarn_integrity = false
+  config.webpacker.check_yarn_integrity = false
 
   # Settings specified here will take precedence over those in config/application.rb.
 
@@ -29,7 +29,8 @@ config.webpacker.check_yarn_integrity = false
 
   # Compress JavaScripts and CSS.
   config.assets.js_compressor = :uglifier
-  # config.assets.css_compressor = :sass
+  # config.assets.css_compressor = :yui
+
 
   # Do not fallback to assets pipeline if a precompiled asset is missed.
   config.assets.compile = false
