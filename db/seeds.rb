@@ -6,14 +6,8 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-so = User.new(name: "Susanne", username: "sus", age:2, gender: "female",
-  email: "test@gmail.com", city: "Copenhagen",
-  description: "I speak fairly good Danish, but there is still room for improvement. I could imagine learning danish with a tandem partner.",
-  dedication: "occassionally", password: "123456")
-so.save
-
 da = Language.create(name: "Danish")
-en  = Language.create(name: "English")
+en = Language.create(name: "English")
 fr = Language.create(name: "French")
 es = Language.create(name: "Spanish")
 ar = Language.create(name: "Arabic")
@@ -40,17 +34,82 @@ ko = Language.create(name: "Korean")
 sw = Language.create(name: "Swedish")
 no = Language.create(name: "Norwegan")
 
+puts "created languages"
+
+
+
+so = User.new(name: "Susanne", username: "sus", age:2, gender: "female",
+  email: "test@gmail.com", city: "Copenhagen",
+  description: "I speak fairly good Danish, but there is still room for improvement. I could imagine learning danish with a tandem partner.",
+  dedication: "occassionally", password: "123456")
+so.save
+
+if so.save
+  puts "created so"
+else
+  puts "error at so"
+end
+
+ma = User.new(name: "Maria", username: "mar", age:26, gender: "female",
+  email: "test26@gmail.com", city: "Aarhus",
+  description: "I speak fairly good Danish, but there is still room for improvement. I could imagine learning danish with a tandem partner.",
+  dedication: "occassionally", password: "123456")
+ma.save
+
+bo = User.new(name: "Bodil", username: "bo70", age: 70, gender: "female",
+  email: "test70@gmail.com", city: "Copenhagen",
+  description: "I can teach you danish and I love to learn italian",
+  dedication: "occassionally", password: "123456")
+bo.save
+if bo.save
+  puts "created bo"
+end
+
+je = User.new(name: "Jens", username: "jens", age:23, gender: "male",
+  email: "test23@gmail.com", city: "Aarhus",
+  description: "I come from Sweden and I'd love to learn Danish from a native speaker",
+  dedication: "occassionally", password: "123456")
+je.save
+puts "created je"
+
+
+
 lskill1 = LanguageSkill.new(score: 5)
 lskill1.user = so
-lskill1.language = it
-lskill1.save
+lskill1.language = da
+if lskill1.save
+  puts "saved language skill 1"
+else
+  puts lskill1.errors.messages
+end
 
 lskill1 = LanguageSkill.new(score: 1)
-lskill1.user = so
-lskill1.language = es
+lskill1.user = je
+lskill1.language = da
 lskill1.save
 
+lskill2 = LanguageSkill.new(score: 6)
+lskill2.user = bo
+lskill2.language = da
+lskill2.save
 
+lskill3 = LanguageSkill.new(score: 3)
+lskill3.user = bo
+lskill3.language = it
+lskill3.save
 
+lskill4 = LanguageSkill.new(score: 6)
+lskill4.user = so
+lskill4.language = it
+lskill4.save
 
+lskill5 = LanguageSkill.new(score: 6)
+lskill5.user = ma
+lskill5.language = it
+lskill5.save
 
+lskill6 = LanguageSkill.new(score: 6)
+lskill6.user = je
+lskill6.language = sw
+lskill6.save
+puts "added language skills to users"
