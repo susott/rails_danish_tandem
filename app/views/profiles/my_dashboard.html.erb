@@ -1,2 +1,37 @@
-<h1> My awesome Dashboard</h1>
-<h2><%= @user.username %></h2>
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="cover-photo-profile" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('https://kitt.lewagon.com/placeholder/cities/berlin');">
+        <div>
+          <p class="cover-content-name"><%= @user.name.capitalize %></p>
+          <p class="cover-content-email"><%= @user.email%></p>
+        <div>
+            <%= image_tag("profile_photo.jpg", class: "img-profile") %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div><!--  close row -->
+
+   <div class="var-cover-profile">
+    <div class="row">
+      <ul>
+        <div class=" col-xs-1"></div>
+        <div class="var-cover col-xs-3">
+          <li>
+          <a  class="var-cover-link" href="#"> Messagues</a>
+        </li>
+        </div>
+        <div class="var-cover col-xs-3">
+          <li>
+          <a class="var-cover-link" href="#">edit</a>
+          </li>
+        </div>
+
+
+      </ul>
+    </div><!-- close row var profile -->
+</div>
+</div> <!-- close container -->
+
