@@ -50,6 +50,12 @@ else
   puts "error at so"
 end
 
+ma = User.new(name: "Maria", username: "mar", age:26, gender: "female",
+  email: "test26@gmail.com", city: "Aarhus",
+  description: "I speak fairly good Danish, but there is still room for improvement. I could imagine learning danish with a tandem partner.",
+  dedication: "occassionally", password: "123456")
+ma.save
+
 bo = User.new(name: "Bodil", username: "bo70", age: 70, gender: "female",
   email: "test70@gmail.com", city: "Copenhagen",
   description: "I can teach you danish and I love to learn italian",
@@ -82,23 +88,28 @@ lskill1.user = je
 lskill1.language = da
 lskill1.save
 
-lskill1 = LanguageSkill.new(score: 6)
-lskill1.user = bo
-lskill1.language = da
-lskill1.save
+lskill2 = LanguageSkill.new(score: 6)
+lskill2.user = bo
+lskill2.language = da
+lskill2.save
 
-lskill1 = LanguageSkill.new(score: 6)
-lskill1.user = so
-lskill1.language = it
-lskill1.save
+lskill3 = LanguageSkill.new(score: 3)
+lskill3.user = bo
+lskill3.language = it
+lskill3.save
 
-lskill1 = LanguageSkill.new(score: 6)
-lskill1.user = je
-lskill1.language = sw
-lskill1.save
+lskill4 = LanguageSkill.new(score: 6)
+lskill4.user = so
+lskill4.language = it
+lskill4.save
+
+lskill5 = LanguageSkill.new(score: 6)
+lskill5.user = ma
+lskill5.language = it
+lskill5.save
+
+lskill6 = LanguageSkill.new(score: 6)
+lskill6.user = je
+lskill6.language = sw
+lskill6.save
 puts "added language skills to users"
-
-
-
-
-
