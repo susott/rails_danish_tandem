@@ -5,7 +5,6 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-
 da = Language.create(name: "Danish")
 en = Language.create(name: "English")
 fr = Language.create(name: "French")
@@ -73,6 +72,14 @@ je.save
 puts "created je"
 
 
+mar = User.new(name: "martin", username: "martin", age:99, gender: "male",
+  email: "test99@gmail.com", city: "Copenhagen",
+  description: "I'm just filling in some text, but I have nothing to say",
+  dedication: "occassionally", password: "123456")
+mar.save
+puts "created ma"
+
+
 
 lskill1 = LanguageSkill.new(score: 5)
 lskill1.user = so
@@ -112,4 +119,25 @@ lskill6 = LanguageSkill.new(score: 6)
 lskill6.user = je
 lskill6.language = sw
 lskill6.save
+
+
+lskill7 = LanguageSkill.new(score: 6)
+lskill7.user = je
+lskill7.language = da
+lskill7.save
+puts "added language skills to users"
+
+
+
+lskill8 = LanguageSkill.new(score: 6)
+lskill8.user = mar
+lskill8.language = da
+lskill8.save
+puts "added language skills to users"
+
+
+lskill9 = LanguageSkill.new(score: 3)
+lskill9.user = mar
+lskill9.language = es
+lskill9.save
 puts "added language skills to users"

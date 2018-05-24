@@ -12,6 +12,7 @@ class User < ApplicationRecord
   validates :dedication, presence: true, inclusion: { in: ["occassionally", "once per month", "once per week", "more often"] }
   validates :gender, presence: true, inclusion: { in: ["female", "male", "other"] }
   validates :age, numericality: { only_integer: true, greater_than: 0, less_than: 110 }
+  validates :native_dane, inclusion: { in: [ true, false ] }
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
