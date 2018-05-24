@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-
+  resources :profiles, only: [:update]
   resources :profiles, only: [:index, :show]
   get 'me', to: 'profiles#my_dashboard', as: :dashboard
 

@@ -1,0 +1,116 @@
+.cover-photo-profile {
+  color: white;
+  text-align: center;
+  // height: 30vh;
+  background-size: cover !important;
+  position: relative;
+  display: block;
+  position: relative;
+  height: 315px;
+  // overflow: hidden;
+  text-decoration: none;
+  background-position: center;
+}
+
+.cover-content-name {
+    font-size: 25px;
+    font-weight: lighter;
+    color: white;
+    opacity: 8.6;
+    position: absolute;
+    left: 183px;
+    top: 250px;
+}
+
+.img-profile{
+  background-color: #fff;
+  border-radius: 2px;
+  height: 160px;
+  width: 160px;
+  position: absolute;
+  display:block;
+  left: 10px;
+  top: 206px;
+
+}
+
+.cover-content-email{
+  top: 277px;
+  font-size: 18px;
+  font-weight: lighter;
+  position:absolute;
+  left: 183px;
+}
+
+.var-cover-profile{
+  background-color: #a944422b;
+  height: 51px;
+}
+
+.var-cover-filler {
+  width: 145px;
+}
+
+.var-cover-profile ul{
+  list-style-type: none!important;
+}
+.var-cover{
+    height: 51px;
+    border-right: 1px solid #e6b1ae;
+    text-align: center;
+    font-size: 14px;
+    /* font-weight: 600; */
+    height: 43px;
+    line-height: 3.05;
+    padding: 0 17px;
+    position: relative;
+    vertical-align: middle;
+    white-space: nowrap;
+    height: 51px;
+
+}
+
+.var-cover-link {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  z-index: 2;
+
+}
+.var-cover-link:hover {
+  opacity: 0.5;
+  text-decoration:none;
+  color:black !important;
+}
+
+.fa-camera{
+  color: #b85856;
+  font-size: 43px;
+}
+
+.icon-camera{
+  position: absolute;
+  top: 260px;
+  right: 13px;
+}
+
+.personal-date-user{
+  background-color: #a944422b;
+  font-size: 15px;
+  padding-left: 16px;
+  padding-bottom: 11px;
+  padding-top: 4px;
+  margin-top: 6px;
+  line-height: 29px;
+  }
+.description-wrapper, .friends-wrapper{
+  background-color:#a944422b;
+  padding-left: 17px;
+  padding-bottom: 11px;
+  padding-right: 14px;
+  padding-top: 4px;
+  margin-top: 7px;
+font-size:17px
+}

@@ -64,6 +64,7 @@ ActiveRecord::Schema.define(version: 20180524084343) do
     t.string "photo"
     t.string "username"
     t.string "street"
+    t.string "photo_background"
     t.boolean "native_dane", default: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
