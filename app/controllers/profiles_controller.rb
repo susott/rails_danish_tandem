@@ -49,6 +49,8 @@ class ProfilesController < ApplicationController
 
   def my_dashboard
     @user = current_user
+    @native_languages = @user.language_skills.where('score > 5').map(&:language)
+    @learn_skills = @user.language_skills.where('score < 6')
   end
 
   def profile_update_params
