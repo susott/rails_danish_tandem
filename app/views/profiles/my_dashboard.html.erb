@@ -2,25 +2,39 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12">
+      <%if @user.photo_background? %>
+      <div  class="cover-photo-profile" style="background-image: url('<%= cl_image_path @user.photo_background%>');">
+
+      <%else %>
       <div class="cover-photo-profile" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('https://kitt.lewagon.com/placeholder/cities/berlin');">
+
+      <%end %>
         <div>
-          <p class="cover-content-name"><%= @user.name.capitalize %></p>
+          <p class="cover-content-name"><%= @user.name %></p>
           <p class="cover-content-email"><%= @user.email%></p>
-        <div>
-            <%= image_tag("profile_photo.jpg", class: "img-profile") %>
+          <div data-toggle="modal" data-target="#uploadProfilePicture" role="button">
+            <%if @user.photo? %>
+              <%= cl_image_tag @user.photo.url, class: "img-profile" %>
+            <%else %>
+              <%= image_tag "profile_photo.jpg", class: "img-profile" %>
+            <%end %>
           </div>
+        </div>
+
+        <div class="icon-camera">
+          <i data-toggle="modal" data-target="#uploadPictureBackground" role="button" class="fas fa-camera"></i>
         </div>
       </div>
     </div>
-  </div><!--  close row -->
+  </div><!--  close row banner profile -->
 
    <div class="var-cover-profile">
     <div class="row">
       <ul>
-        <div class=" col-xs-1"></div>
+        <div class="var-cover-filler col-xs-1"></div>
         <div class="var-cover col-xs-3">
           <li>
-          <a  class="var-cover-link" href="#"> Messagues</a>
+          <a  class="var-cover-link" href="#"> Messages</a>
         </li>
         </div>
         <div class="var-cover col-xs-3">
@@ -32,6 +46,95 @@
 
       </ul>
     </div><!-- close row var profile -->
+
+    <!-- ...................BODY SECTION..................... -->
+    <div class="row">
+      <div class="col-xs-3">
+        <div class="personal-date-user">
+          <h5 class="text-center">About</h5>
+            <ul class="list-unstyled list-spaced">
+              <li>
+                <span><strong>Age:</strong> <%= @user.age %></span>
+              </li>
+              <li>
+                <span><strong>Gender:</strong> <%= @user.gender %></span>
+              </li>
+              <li>
+                <span><strong>City:</strong> <%= @user.city %></span>
+              </li>
+              <li>
+                <span><strong>Last login:</strong> <%= @user.age %></span>
+              </li>
+            </ul>
+        </div>
+      </div>
+      <div class="col-xs-6">
+        <div class="description-wrapper">
+          <h5 class="text-center"> Description</h5>
+          <p><%= @user.description %></p>
+
+        </div>
+      </div>
+      <div class="col-xs-3">
+        <div class="friends-wrapper">
+         <h6>Friends</h6>
+        </div>
+      </div>
+
+
+    </div> <!-- close row body profile -->
 </div>
 </div> <!-- close container -->
+
+
+
+
+
+
+
+
+
+
+<!-- FORM UPLOAD PROFILE PICTURE-->
+<%= simple_form_for(@user, url: profile_path(@user.id), method: :put) do |f| %>
+<div class="modal fade" id="uploadProfilePicture" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel"><%= f.input :photo  %></h4>
+      </div>
+      <div class="modal-body">
+          <%= f.input :photo_cache, as: :hidden %>
+          <%= f.button :submit %>
+          <!-- [...] -->
+
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>
+
+<!-- FORM UPLOAD BACKGROUND PICTURE-->
+
+<%= simple_form_for(@user, url: profile_path(@user.id), method: :put) do |f| %>
+<div class="modal fade" id="uploadPictureBackground" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel"><%= f.input :photo_background  %></h4>
+      </div>
+      <div class="modal-body">
+          <%= f.input :photo_background_cache, as: :hidden %>
+          <%= f.button :submit %>
+          <!-- [...] -->
+
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>
+
+
 

@@ -3,6 +3,8 @@ Rails.application.routes.draw do
 
   get 'profiles/show'
 
+  resources :profiles, only: [:update]
+
   get 'me', to: 'profiles#my_dashboard', as: :dashboard
 
   devise_for :users, controllers: { registrations: 'users/registrations' } do
