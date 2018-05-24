@@ -63,7 +63,7 @@
                 <span><strong>City:</strong> <%= @user.city %></span>
               </li>
               <li>
-                <span><strong>Last login:</strong> <%= @user.age %></span>
+                <span><strong>Last login:</strong> <%= @user.last_sign_in_at.strftime("%A, %b %d") %></span>
               </li>
             </ul>
         </div>
