@@ -10,9 +10,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # POST /resource
-  # def create
-  #   super
-  # end
+  def create
+    super
+    lskill = LanguageSkill.new(score: 6)
+    lskill.user = current_user
+    lskill.language = Language.find(params.dig(:user, :language_ids)[1])
+    lskill.save
+  end
 
   # GET /resource/edit
   # def edit
