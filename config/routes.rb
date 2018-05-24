@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
+  get 'language_skills/create'
+
   resources :profiles, only: [:update]
   resources :profiles, only: [:index, :show]
+
   get 'me', to: 'profiles#my_dashboard', as: :dashboard
 
   devise_for :users, controllers: { registrations: 'users/registrations' } do

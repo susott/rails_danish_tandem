@@ -80,6 +80,25 @@
          <h6>Friends</h6>
         </div>
       </div>
+      <div class="col-xs-3">
+        <div class="friends-wrapper">
+          <h6>Languages</h6>
+          <ul class="list-unstyled list-spaced">
+            <% @native_languages.each do |lang| %>
+              <li><span><strong>Native:</strong>
+                 <%= lang.name %>
+              </span></li>
+            <% end %>
+
+            <% @learn_languages.each do |lang| %>
+              <li><span><strong>Native:</strong>
+                 <%= lang.name %>
+              </span></li>
+            <% end %>
+          </ul>
+          <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#addLanugage">Add Language</button>
+        </div>
+      </div>
 
 
     </div> <!-- close row body profile -->
@@ -130,6 +149,26 @@
           <%= f.button :submit %>
           <!-- [...] -->
 
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>
+
+<!-- FORM ADD LANGUAGES-->
+
+<%= simple_form_for(@user, url: language_skills_create_path, method: :get) do |f| %>
+<div class="modal fade" id="addLanugage" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Add language</h4>
+      </div>
+      <div class="modal-body">
+          <%= f.association :languages, required: true %>
+          <%= f.association :language_skills, as: :radio_buttons, hint: "1: beginner 5: fluent", collection: 1..5 %>
+          <%= f.button :submit %>
       </div>
     </div>
   </div>
