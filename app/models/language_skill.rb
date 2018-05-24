@@ -3,6 +3,7 @@ class LanguageSkill < ApplicationRecord
   belongs_to :language
 
   validates :score, presence: true, inclusion: { in: 1..6 }
+  validates :language, uniqueness: { scope: :user }
   after_save :set_user_native_dane
 
   def set_user_native_dane

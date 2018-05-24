@@ -90,11 +90,14 @@
               </span></li>
             <% end %>
 
-            <% @learn_languages.each do |lang| %>
-              <li><span><strong>Native:</strong>
-                 <%= lang.name %>
+            <% @learn_skills.each do |skill| %>
+              <li><span><strong>Learning:</strong>
+                <%= skill.language.name %>
+                <%= skill.score %>
+
               </span></li>
             <% end %>
+
           </ul>
           <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#addLanugage">Add Language</button>
         </div>
@@ -167,7 +170,9 @@
       </div>
       <div class="modal-body">
           <%= f.association :languages, required: true %>
-          <%= f.association :language_skills, as: :radio_buttons, hint: "1: beginner 5: fluent", collection: 1..5 %>
+          <%= f.association :language_skills, as: :radio_buttons, collection: [[1, "Beginner"],[2, "Beginner-Intermediate"],[3, "Intermediate"],[4,"Good"],[5,"Fluent"],[6,"Native"]],
+            label_method: :second, value_method: :first  %>
+
           <%= f.button :submit %>
       </div>
     </div>
