@@ -1,10 +1,6 @@
 Rails.application.routes.draw do
-  get 'profiles/index'
-
-  get 'profiles/show'
-
   resources :profiles, only: [:update]
-
+  resources :profiles, only: [:index, :show]
   get 'me', to: 'profiles#my_dashboard', as: :dashboard
 
   devise_for :users, controllers: { registrations: 'users/registrations' } do
@@ -15,7 +11,6 @@ Rails.application.routes.draw do
 
   get "pages/design", to: "pages#design"
   get "pages/about", to: "pages#about"
-
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
