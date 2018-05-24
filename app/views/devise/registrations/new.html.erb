@@ -11,21 +11,38 @@
         </div>
 
         <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-          <%= f.error_notification %>
+
+          <% if resource.errors.any? %>
+            <div class="errors-container">
+             <ul>
+             <% resource.errors.full_messages.each do |message| %>
+           <li><%= message %></li>
+           <% end %>
+             </ul>
+           </div>
+           <% end %>
 
           <div class="form-inputs">
             <%= f.input :email, required: true, autofocus: true %>
             <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length), class: 'small-text' %>
             <%= f.input :password_confirmation, required: true %>
 
-            <%= f.input :username, required: true %>
             <%= f.input :name, required: true %>
             <%= f.input :city, required: true %>
+
+            <div class="form-group">
+              <%= f.association :languages, label: 'Native language', required: true %>
+                <%#= f.association :language_skills, as: :radio_buttons, hint: "1: beginner 5: fluent", collection: 1..5 %>
+            </div>
+
+            <div class="form-group">
             <%= f.input :description, required: true %>
             <%= f.input :dedication,
               collection:["occassionally", "once per month", "once per week", "more often"] %>
-            <%= f.input :gender, collection:["female", "male", "other"] %>
-            <%= f.input :age, required: true , as: :numeric%>
+            </div>
+
+            <%#= f.input :gender, collection:["female", "male", "other"] %>
+            <%#= f.input :age, required: true , as: :numeric%>
           </div>
 
           <div class="form-actions">
