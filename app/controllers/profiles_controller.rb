@@ -9,14 +9,14 @@ class ProfilesController < ApplicationController
       if current_user.native_dane
         @filtered_users = User.joins(languages: :language_skills)
             .where(languages: {name: params[:query]}).where('language_skills.score > 5')
-        @users = @filtered_users.where(users: {city: current_user.city}).uniq
+        @users = @filtered_users.where(users: {address: current_user.address}).uniq
       else  # danish-learner
           @users = User.joins(languages: :language_skills).where(native_dane: true)
-              .where(users: {city: current_user.city})
+              .where(users: {address: current_user.address})
               .where(languages: {name: params[:query]}).uniq
       end
 
-      ## working, more or less, without city
+      ## working, more or less, without address
       # @language_i_speak_natively = Language.joins(:language_skills)
       #    .where(language_skills: { score: 6, user_id: current_user.id}).first
       # add validation to have only one native language
