@@ -14,7 +14,7 @@ Rails.application.routes.draw do
 
   get 'me', to: 'profiles#my_dashboard', as: :dashboard
 
-  devise_for :users, controllers: { registrations: 'users/registrations' }
+  devise_for :users, controllers: { registrations: 'users/registrations', sessions: 'users/sessions'}
 
   resources :users, except: [ :new, :create, :edit, :update, :destroy, :index, :show ] do
     resources :language_skills, only: [:create, :update, :destroy]
