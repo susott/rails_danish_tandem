@@ -16,6 +16,9 @@ class ProfilesController < ApplicationController
               .where(languages: {name: params[:query]}).uniq
       end
 
+    else
+      @users = User.all
+    end
       ## working, more or less, without address
       # @language_i_speak_natively = Language.joins(:language_skills)
       #    .where(language_skills: { score: 6, user_id: current_user.id}).first
@@ -30,10 +33,15 @@ class ProfilesController < ApplicationController
       # @user = User.joins(languages: :language_skills).where(languages: {name: "Italian"})
       # @user = User.joins(languages: :language_skills).where(languages: {name: "Italian"}).where('language_skills.score > 5')
       # @users = User.joins(languages: :language_skills).where(languages: {name: params[:query]})
+      @users_geolocation = User.where.not(latitude: nil, longitude: nil)
 
-    else
-      @users = User.all
-    end
+      @markers = @users_geolocation.map do |user|
+        {
+          lat: user.latitude,
+          lng: user.longitude#,
+          # infoWindow: { content: render_to_string(partial: "/flats/map_box", locals: { flat: flat }) }
+        }
+      end
   end
 
   def show
