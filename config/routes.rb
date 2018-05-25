@@ -8,14 +8,11 @@ Rails.application.routes.draw do
 
   get 'language_skills/create'
 
-  resources :profiles, only: [:update]
-  resources :profiles, only: [:index, :show]
+  resources :profiles, only: [:show, :update, :index]
+  # resources :profiles, only: [:index, :show, :update]
 
 
   get 'me', to: 'profiles#my_dashboard', as: :dashboard
-  get 'profile/:id', to: 'profiles#show', as: :profile
-  patch 'profile/:id', to: 'profiles#update'
-  get 'profiles', to: 'profiles#index', as: :profiles
 
   devise_for :users, controllers: { registrations: 'users/registrations' }
 

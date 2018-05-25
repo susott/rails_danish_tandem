@@ -43,12 +43,6 @@ so = User.new(name: "Susanne", username: "sus", age:2, gender: "female",
   dedication: "occassionally", password: "123456")
 so.save
 
-if so.save
-  puts "created so"
-else
-  puts "error at so"
-end
-
 ma = User.new(name: "Maria", username: "mar", age:26, gender: "female",
   email: "test26@gmail.com", address: "Aarhus",
   description: "I speak fairly good Danish, but there is still room for improvement. I could imagine learning danish with a tandem partner.",
@@ -79,18 +73,16 @@ mar = User.new(name: "martin", username: "martin", age:99, gender: "male",
 mar.save
 puts "created ma"
 
-
-
-lskill1 = LanguageSkill.new(score: 5)
+lskill1 = LanguageSkill.new(score: 6)
 lskill1.user = so
-lskill1.language = da
+lskill1.language = it
 if lskill1.save
   puts "saved language skill 1"
 else
   puts lskill1.errors.messages
 end
 
-lskill1 = LanguageSkill.new(score: 1)
+lskill1 = LanguageSkill.new(score: 6)
 lskill1.user = je
 lskill1.language = da
 lskill1.save
@@ -100,14 +92,14 @@ lskill2.user = bo
 lskill2.language = da
 lskill2.save
 
-lskill3 = LanguageSkill.new(score: 3)
-lskill3.user = bo
+lskill3 = LanguageSkill.new(score: 6)
+lskill3.user = mar
 lskill3.language = it
 lskill3.save
 
 lskill4 = LanguageSkill.new(score: 6)
-lskill4.user = so
-lskill4.language = it
+lskill4.user = ma
+lskill4.language = es
 lskill4.save
 
 lskill5 = LanguageSkill.new(score: 6)
@@ -121,7 +113,7 @@ lskill6.language = sw
 lskill6.save
 
 
-lskill7 = LanguageSkill.new(score: 6)
+lskill7 = LanguageSkill.new(score: 5)
 lskill7.user = je
 lskill7.language = da
 lskill7.save
@@ -129,7 +121,7 @@ puts "added language skills to users"
 
 
 
-lskill8 = LanguageSkill.new(score: 6)
+lskill8 = LanguageSkill.new(score: 2)
 lskill8.user = mar
 lskill8.language = da
 lskill8.save
