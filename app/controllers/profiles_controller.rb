@@ -16,6 +16,7 @@ class ProfilesController < ApplicationController
               .where(languages: {name: params[:query]}).uniq
       end
 
+
       ## working, more or less, without city
       # @language_i_speak_natively = Language.joins(:language_skills)
       #    .where(language_skills: { score: 6, user_id: current_user.id}).first
@@ -32,7 +33,7 @@ class ProfilesController < ApplicationController
       # @users = User.joins(languages: :language_skills).where(languages: {name: params[:query]})
 
     else
-      @users = User.all
+      @users = current_user ? User.where.not(id: current_user.id) : User.all
     end
   end
 

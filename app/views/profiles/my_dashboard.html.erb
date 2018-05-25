@@ -34,7 +34,8 @@
         <div class="var-cover-filler col-xs-1"></div>
         <div class="var-cover col-xs-3">
           <li>
-          <a  class="var-cover-link" href="#"> Messages</a>
+          <%= link_to("Message",my_messages_path(@user), class: "var-cover-link") %>
+
         </li>
         </div>
         <div class="var-cover col-xs-3">

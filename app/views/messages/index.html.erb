@@ -1,0 +1,33 @@
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-1"></div>
+    <div class="col-xs-10">
+
+        <% @messages.each do |message| %>
+
+
+          <div class="message">
+            <img class="avatar-large" src="https://kitt.lewagon.com/placeholder/users/gabriel-dehan">
+            <div class="message-name">
+              <h3>hola</h3>
+              <p>10/07/17</p>
+            </div>
+            <div class="message-body">
+              <p><strong>I am not sure yet!</strong></p>
+              <p>
+                <%= message.content %>
+              </p>
+            </div>
+            <div class="message-status">
+              <p class="status pending">Pending</p>
+              <p class="price">€345</p>
+            </div>
+          </div>
+        <% end %>
+    </div>
+    <div class="col-xs-1"></div>
+  </div>
+</div>
+
+
