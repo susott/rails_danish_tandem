@@ -11,7 +11,7 @@
       <%end %>
         <div>
           <p class="cover-content-name"><%= @user.name %></p>
-          <p class="cover-content-email"><%= @user.email%></p>
+          <!-- <p class="cover-content-email"><%= @user.email%></p> -->
           <div data-toggle="modal" data-target="#uploadProfilePicture" role="button">
             <%if @user.photo? %>
               <%= cl_image_tag @user.photo.url, class: "img-profile" %>
@@ -93,7 +93,21 @@
 
 
     </div> <!-- close row body profile -->
-</div>
+
+
+    <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+        <div class="map-wrapper">
+          <div
+            id="map"
+            style="width: 100%;
+            height: 400px;"
+            data-markers="<%= @markers.to_json %>"
+          >
+          </div>
+        </div> <!-- end map wrapper -->
+      </div> <!-- end col -->
+
+  </div>
 </div> <!-- close container -->
 
 
