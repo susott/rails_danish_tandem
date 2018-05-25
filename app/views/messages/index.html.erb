@@ -3,28 +3,31 @@
   <div class="row">
     <div class="col-xs-1"></div>
     <div class="col-xs-10">
+      <div class="message-wrapper">
 
         <% @messages.each do |message| %>
-
-
           <div class="message">
-            <img class="avatar-large" src="https://kitt.lewagon.com/placeholder/users/gabriel-dehan">
+            <%if message.sender.photo? %>
+              <%= cl_image_tag (message.sender.photo), class: "avatar-large" %>
+            <%else %>
+              <%= image_tag "profile_photo.jpg", class: "avatar-large" %>
+            <%end %>
             <div class="message-name">
-              <h3>hola</h3>
-              <p>10/07/17</p>
+              <h3><%= message.sender.name %></h3>
+              <p><%= message.created_at %></p>
             </div>
             <div class="message-body">
-              <p><strong>I am not sure yet!</strong></p>
+              <p><strong>this is my asunt</strong></p>
               <p>
                 <%= message.content %>
               </p>
             </div>
             <div class="message-status">
-              <p class="status pending">Pending</p>
-              <p class="price">€345</p>
+              <i class="fas fa-check"></i>
             </div>
           </div>
         <% end %>
+        </div>
     </div>
     <div class="col-xs-1"></div>
   </div>

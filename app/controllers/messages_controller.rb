@@ -13,7 +13,7 @@ class MessagesController < ApplicationController
     @message.sender = current_user
     @message.receiver = User.find(params[:user_id])
     if @message.save
-      redirect_to message_conversation_path(@message.receiver)
+      redirect_to user_messages_path(@message.receiver)
     else
       render :new
     end
