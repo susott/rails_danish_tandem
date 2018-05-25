@@ -38,12 +38,10 @@ class ProfilesController < ApplicationController
       # @user = User.joins(languages: :language_skills).where(languages: {name: "Italian"})
       # @user = User.joins(languages: :language_skills).where(languages: {name: "Italian"}).where('language_skills.score > 5')
       # @users = User.joins(languages: :language_skills).where(languages: {name: params[:query]})
+
       @users_geolocation = User.where.not(latitude: nil, longitude: nil)
 
-
-    else
       @users = current_user ? User.where.not(id: current_user.id) : User.all
-    end
 
       @markers = @users_geolocation.map do |user|
         {
@@ -52,7 +50,6 @@ class ProfilesController < ApplicationController
           # infoWindow: { content: render_to_string(partial: "/flats/map_box", locals: { flat: flat }) }
         }
       end
-
   end
 
   def show
