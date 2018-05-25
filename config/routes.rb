@@ -1,12 +1,16 @@
 Rails.application.routes.draw do
 
-
-
   # get 'messages/index'
 
   # get 'messages/create'
 
   # get 'messages/new'
+
+  get 'language_skills/create'
+
+  resources :profiles, only: [:update]
+  resources :profiles, only: [:index, :show]
+
 
   get 'me', to: 'profiles#my_dashboard', as: :dashboard
   get 'profile/:id', to: 'profiles#show', as: :profile

@@ -10,9 +10,19 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # POST /resource
-  # def create
-  #   super
-  # end
+  def create
+    native_language_id = params.dig(:user, :language_ids)[1]
+    if native_language_id.nil?
+      redirect_to new_user_registration_path
+    else
+      super
+      native_language = Language.find(native_language_id)
+      lskill = LanguageSkill.new(score: 6)
+      lskill.user = current_user
+      lskill.language = native_language
+      lskill.save
+    end
+  end
 
   # GET /resource/edit
   # def edit
