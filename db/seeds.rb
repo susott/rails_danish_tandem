@@ -38,7 +38,7 @@ puts "created languages"
 
 
 so = User.new(name: "Susanne", username: "sus", age:2, gender: "female",
-  email: "test@gmail.com", city: "Copenhagen",
+  email: "test@gmail.com", address: "Copenhagen",
   description: "I speak fairly good Danish, but there is still room for improvement. I could imagine learning danish with a tandem partner.",
   dedication: "occassionally", password: "123456")
 so.save
@@ -50,13 +50,13 @@ else
 end
 
 ma = User.new(name: "Maria", username: "mar", age:26, gender: "female",
-  email: "test26@gmail.com", city: "Aarhus",
+  email: "test26@gmail.com", address: "Aarhus",
   description: "I speak fairly good Danish, but there is still room for improvement. I could imagine learning danish with a tandem partner.",
   dedication: "occassionally", password: "123456")
 ma.save
 
 bo = User.new(name: "Bodil", username: "bo70", age: 70, gender: "female",
-  email: "test70@gmail.com", city: "Copenhagen",
+  email: "test70@gmail.com", address: "Copenhagen",
   description: "I can teach you danish and I love to learn italian",
   dedication: "occassionally", password: "123456")
 bo.save
@@ -65,7 +65,7 @@ if bo.save
 end
 
 je = User.new(name: "Jens", username: "jens", age:23, gender: "male",
-  email: "test23@gmail.com", city: "Aarhus",
+  email: "test23@gmail.com", address: "Aarhus",
   description: "I come from Sweden and I'd love to learn Danish from a native speaker",
   dedication: "occassionally", password: "123456")
 je.save
@@ -73,7 +73,7 @@ puts "created je"
 
 
 mar = User.new(name: "martin", username: "martin", age:99, gender: "male",
-  email: "test99@gmail.com", city: "Copenhagen",
+  email: "test99@gmail.com", address: "Copenhagen",
   description: "I'm just filling in some text, but I have nothing to say",
   dedication: "occassionally", password: "123456")
 mar.save

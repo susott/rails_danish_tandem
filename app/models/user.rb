@@ -6,7 +6,7 @@ class User < ApplicationRecord
   has_many :prefered_meeting_times, dependent: :destroy
 
   validates :name, presence: true
-  validates :city, presence: true
+  validates :address, presence: true
   validates :description, presence: true, length: { minimum: 50 }
   validates :dedication, presence: true, inclusion: { in: ["occassionally", "once per month", "once per week", "more often"] }
   # validates :gender, inclusion: { in: ["female", "male", "other"] }
@@ -18,4 +18,7 @@ class User < ApplicationRecord
 
   mount_uploader :photo, PhotoUploader
   mount_uploader :photo_background, PhotoUploader
+
+  geocoded_by :address
+  after_validation :geocode, if: :will_save_change_to_address?
 end

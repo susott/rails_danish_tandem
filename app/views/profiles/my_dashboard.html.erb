@@ -60,7 +60,7 @@
                 <span><strong>Gender:</strong> <%= @user.gender %></span>
               </li>
               <li>
-                <span><strong>City:</strong> <%= @user.city %></span>
+                <span><strong>Address:</strong> <%= @user.address %></span>
               </li>
               <li>
                 <span><strong>Last login:</strong> <%= @user.last_sign_in_at.strftime("%A, %b %d") %></span>
@@ -103,9 +103,20 @@
         </div>
       </div>
 
+      <div class="col-xs-3">
+        <div class="map-wrapper">
+          <div
+            id="map"
+            style="width: 100%;
+            height: 600px;"
+            data-markers="<%= @markers.to_json %>"
+          >
+          </div>
+        </div> <!-- end wrapper -->
+      </div> <!-- end col -->
 
     </div> <!-- close row body profile -->
-</div>
+  </div> <!--- close var cover profile -->
 </div> <!-- close container -->
 
 
