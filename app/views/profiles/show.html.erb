@@ -91,6 +91,26 @@
         </div>
       </div>
 
+      <div class="col-xs-3">
+        <div class="friends-wrapper">
+          <h6>Languages</h6>
+          <ul class="list-unstyled list-spaced">
+            <% @native_languages.each do |lang| %>
+              <li><span><strong>Native:</strong>
+                 <%= lang.name %>
+              </span></li>
+            <% end %>
+
+            <% @learn_skills.each do |skill| %>
+              <li><span><strong>Learning:</strong>
+                <%= skill.language.name %>
+                <%= skill.score %>
+              </span></li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+
 
     </div> <!-- close row body profile -->
 
