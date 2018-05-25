@@ -9,15 +9,22 @@ class ProfilesController < ApplicationController
       if current_user.native_dane
         @filtered_users = User.joins(languages: :language_skills)
             .where(languages: {name: params[:query]}).where('language_skills.score > 5')
-        @users = @filtered_users.where(users: {city: current_user.city}).uniq
+        @users = @filtered_users.where(users: {address: current_user.address}).uniq
       else  # danish-learner
           @users = User.joins(languages: :language_skills).where(native_dane: true)
-              .where(users: {city: current_user.city})
+              .where(users: {address: current_user.address})
               .where(languages: {name: params[:query]}).uniq
       end
 
 
+
       ## working, more or less, without city
+
+    else
+      @users = User.all
+    end
+      ## working, more or less, without address
+
       # @language_i_speak_natively = Language.joins(:language_skills)
       #    .where(language_skills: { score: 6, user_id: current_user.id}).first
       # add validation to have only one native language
@@ -31,10 +38,21 @@ class ProfilesController < ApplicationController
       # @user = User.joins(languages: :language_skills).where(languages: {name: "Italian"})
       # @user = User.joins(languages: :language_skills).where(languages: {name: "Italian"}).where('language_skills.score > 5')
       # @users = User.joins(languages: :language_skills).where(languages: {name: params[:query]})
+      @users_geolocation = User.where.not(latitude: nil, longitude: nil)
+
 
     else
       @users = current_user ? User.where.not(id: current_user.id) : User.all
     end
+
+      @markers = @users_geolocation.map do |user|
+        {
+          lat: user.latitude,
+          lng: user.longitude#,
+          # infoWindow: { content: render_to_string(partial: "/flats/map_box", locals: { flat: flat }) }
+        }
+      end
+
   end
 
   def show
@@ -50,6 +68,8 @@ class ProfilesController < ApplicationController
 
   def my_dashboard
     @user = current_user
+    @native_languages = @user.language_skills.where('score > 5').map(&:language)
+    @learn_skills = @user.language_skills.where('score < 6')
   end
 
   def profile_update_params
