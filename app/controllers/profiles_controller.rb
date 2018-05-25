@@ -16,10 +16,15 @@ class ProfilesController < ApplicationController
               .where(languages: {name: params[:query]}).uniq
       end
 
+
+
+      ## working, more or less, without city
+
     else
       @users = User.all
     end
       ## working, more or less, without address
+
       # @language_i_speak_natively = Language.joins(:language_skills)
       #    .where(language_skills: { score: 6, user_id: current_user.id}).first
       # add validation to have only one native language
@@ -35,6 +40,11 @@ class ProfilesController < ApplicationController
       # @users = User.joins(languages: :language_skills).where(languages: {name: params[:query]})
       @users_geolocation = User.where.not(latitude: nil, longitude: nil)
 
+
+    else
+      @users = current_user ? User.where.not(id: current_user.id) : User.all
+    end
+
       @markers = @users_geolocation.map do |user|
         {
           lat: user.latitude,
@@ -42,6 +52,7 @@ class ProfilesController < ApplicationController
           # infoWindow: { content: render_to_string(partial: "/flats/map_box", locals: { flat: flat }) }
         }
       end
+
   end
 
   def show

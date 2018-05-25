@@ -3,6 +3,7 @@
   align-items: center;
   padding: 20px;
   border-bottom: 1px solid rgba(220,224,244,0.4);
+  background-color: wheat;
 }
 .message:last-child {
   border-bottom: none;
@@ -52,4 +53,9 @@
 }
 .status.pending {
   color: lightgrey;
+}
+ .avatar-large {
+  width: 77px;
+  border-radius: 50%;
+  height: 77px;
 }

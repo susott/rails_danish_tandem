@@ -4,6 +4,8 @@ class User < ApplicationRecord
   has_many :language_skills, dependent: :destroy
   has_many :languages, -> { distinct }, through: :language_skills
   has_many :prefered_meeting_times, dependent: :destroy
+  has_many :received_messages, class_name: "Message", foreign_key: :receiver_id
+  has_many :sent_messages, class_name: "Message", foreign_key: :sender_id
 
   validates :name, presence: true
   validates :address, presence: true
