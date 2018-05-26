@@ -16,6 +16,7 @@
   <div class="index-wrapper">
     <div class="container">
       <div class="row">
+
       <% @users.each do |user| %>
         <div class="col-xs-12 col-sm-4">
           <% if user.photo_background? %>
@@ -23,7 +24,11 @@
           <% else %>
             <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://images.unsplash.com/photo-1494200483035-db7bc6aa5739?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=f6f98c139aa65779e05b315d54e332d1&auto=format&fit=crop&w=500&q=60');">
           <% end %>
-            <div class="card-category">In <%= user.address %></div>
+
+            <div class="card-category">
+              In <%= user.address %>
+            </div>
+
             <div class="card-description">
               <h2><%= user.name.capitalize %></h2>
               <p> speaks
@@ -32,15 +37,15 @@
               <% end %>
               </p>
             </div>
-            <% if user.photo? %>
-              <div class="card" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url(<%= cl_image_path(user.photo) %>);">
-            <% else %>
+
+            <%# if user.photo? %>
+            <%# else %>
               <img class="card-user" src="https://kitt.lewagon.com/placeholder/users/tgenaitay">
             <%= link_to("", profile_path(user), class: "card-link") %>
-            <% end %>
+            <%# end %>
 
-          </div>
-        </div>
+          </div> <!-- end card -->
+        </div> <!-- end column -->
       <% end %>
 
       </div> <!-- end row -->
