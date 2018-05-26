@@ -1,12 +1,17 @@
 <div class="index-wrapper">
-  <%= form_tag profiles_path, method: :get do %>
-    <%= text_field_tag :query, params[:query], class: "form-control",
-      placeholder: "Language"
-    %>
-    <a href="" class="search-button">Search</a>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+        <%= form_tag profiles_path, method: :get do %>
+          <%= text_field_tag :query, params[:query], class: "form-control",
+          placeholder: "Language" %>
+          <a href="" class="search-button">Search</a>
+        <% end %>
+      </div>
+    </div> <!-- end row -->
+  </div> <!-- end container -->
+</div> <!-- end wrapper -->
 
-  <% end %>
-</div>
 
 <% if @users.empty? %>
   <h3> Sorry, we couldn't find any matching tandem partner for you. </h3>
@@ -18,15 +23,15 @@
       <div class="row">
 
       <% @users.each do |user| %>
-        <div class="col-xs-12 col-sm-4">
+        <div class="col-xs-12 col-sm-6 col-lg-4">
           <% if user.photo_background? %>
-            <div class="card" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url(<%= cl_image_path(user.photo_background) %>);">
+            <div class="card" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url(<%= cl_image_path(user.photo_background, :crop=>"fill") %>);">
           <% else %>
             <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://images.unsplash.com/photo-1494200483035-db7bc6aa5739?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=f6f98c139aa65779e05b315d54e332d1&auto=format&fit=crop&w=500&q=60');">
           <% end %>
 
             <div class="card-category">
-              In <%= user.address %>
+              <%= user.address %>
             </div>
 
             <div class="card-description">
@@ -38,15 +43,17 @@
               </p>
             </div>
 
-            <%# if user.photo? %>
-            <%# else %>
-              <img class="card-user" src="https://kitt.lewagon.com/placeholder/users/tgenaitay">
+            <% if user.photo? %>
+              <%= cl_image_tag(user.photo, class: "card-user-new", :width=>80, :height=>80) %>
+            <% else %>
+              <img class="card-user-new" src="https://images.unsplash.com/photo-1500373994708-4d781bd7bd15?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=d6d89db6cf08d7c31dc625d10453eb6a&auto=format&fit=crop&w=1050&q=80">
+            <% end %>
             <%= link_to("", profile_path(user), class: "card-link") %>
-            <%# end %>
+
 
           </div> <!-- end card -->
         </div> <!-- end column -->
-      <% end %>
+      <% end %> <!-- end iteration users -->
 
       </div> <!-- end row -->
     </div> <!-- end container -->
