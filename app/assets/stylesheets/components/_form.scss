@@ -17,11 +17,14 @@
 
 }
 
-h2 {
+.form-wrapper {
+  h2 {
     text-align: center;
     color: $red-brown;
     padding-top: 20px;
+  }
 }
+
 
 .form-container {
   text-align: center;
@@ -55,6 +58,26 @@ h2 {
 }
 
 .text-muted {
-    color: #23292c!important;
+  color: #23292c!important;
 
 }
+
+.form-rounded {
+  border-radius: 5px;
+  border-color: $grey;
+  color: $grey;
+}
+
+
+
+.index-wrapper {
+  margin: 50px;
+}
+
+.index-search-wrapper {
+  margin: 0 auto;
+  background-color: $blue;
+  padding: 30px;
+  color: $red-brown;
+}
+
