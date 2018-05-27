@@ -36,16 +36,18 @@
   position: absolute;
   bottom: 10px;
   left: 10px;
+  h2 {
+    font-size: 24px;
+    color: $white;
+  }
 }
-.card-description h2 {
-  font-size: 24px;
-  color: $white;
-}
+
 .card-description p {
   font-size: 14px;
   opacity: 0.8;
   font-weight: lighter;
 }
+
 .card-link {
   position: absolute;
   top: 0;
