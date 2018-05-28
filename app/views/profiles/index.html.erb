@@ -62,12 +62,6 @@
             <% end %>
             <%= link_to("", profile_path(user), class: "card-link") %>
 
-          </div>
-        </div>
-      <% end %>
-
-
-
           </div> <!-- end card -->
         </div> <!-- end column -->
       <% end %> <!-- end iteration users -->
@@ -77,3 +71,10 @@
     </div> <!-- end container -->
   </div> <!-- end wrapper -->
 <% end %>
+
+  <div
+  id="map"
+  style="width: 100%;
+  height: 600px;"
+  data-markers="<%= @markers.to_json %>"
+  ></div>
