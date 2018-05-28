@@ -38,7 +38,7 @@ puts "created languages"
 
 
 so = User.new(name: "Susanne", username: "sus", age:2, gender: "female",
-  email: "test@gmail.com", address: "Copenhagen",
+  email: "test@gmail.com", address: "Hellerup",
   description: "I speak fairly good Danish, but there is still room for improvement. I could imagine learning danish with a tandem partner.",
   dedication: "occassionally", password: "123456")
 so.save
@@ -50,7 +50,7 @@ ma = User.new(name: "Maria", username: "mar", age:26, gender: "female",
 ma.save
 
 bo = User.new(name: "Bodil", username: "bo70", age: 70, gender: "female",
-  email: "test70@gmail.com", address: "Copenhagen",
+  email: "test70@gmail.com", address: "Vejle",
   description: "I can teach you danish and I love to learn italian",
   dedication: "occassionally", password: "123456")
 bo.save
