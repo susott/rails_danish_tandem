@@ -24,11 +24,9 @@ class ProfilesController < ApplicationController
   ####
 
     if params[:native].present?
-
       # search for users, where params[:native] == current_users learning language
       # filter for users, where params[:learning] == current_users native language
       # filter for users around that city (10km?)
-
       @native_users = User.joins(languages: :language_skills)
             .where(languages: {name: params[:native]})
             .where('language_skills.score < 6')
@@ -38,12 +36,12 @@ class ProfilesController < ApplicationController
       #@users_nearby = User.near([current_user.latitude,current_user.longitude],20)
       @users_nearby = User.near(params[:city],20)
       @users = @native_users & @learning_users & @users_nearby
-
+      raise
     else
       @users = User.all
     end
 
-    #@users_geolocation = User.where.not(latitude: nil, longitude: nil)
+  #@users_geolocation = User.where.not(latitude: nil, longitude: nil)
     @users_have_geo = User.joins(languages: :language_skills)
           .where.not(latitude: nil, longitude: nil)
     @users_geolocation = @users_have_geo & @users
