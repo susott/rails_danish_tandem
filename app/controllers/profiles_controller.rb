@@ -10,8 +10,10 @@ class ProfilesController < ApplicationController
 
     if params[:learning].present?
       @learning = params[:learning]
-    else
+    elsif current_user.languages.find_by('language_skills.score < 5')
       @learning = current_user.languages.find_by('language_skills.score < 5').name
+    else
+      @learning = ""
     end
 
     if params[:city].present?
@@ -20,23 +22,7 @@ class ProfilesController < ApplicationController
       @city = current_user.address
     end
 
-
-    ###### this is the old search #########
-    #if params[:query].present?
-      if current_user.native_dane
-        @filtered_users = User.joins(languages: :language_skills)
-            .where(languages: {name: params[:query]}).where('language_skills.score > 5')
-        @users = @filtered_users.where(users: {address: current_user.address}).uniq
-      else  # danish-learner
-          @users = User.joins(languages: :language_skills).where(native_dane: true)
-              .where(users: {address: current_user.address})
-              .where(languages: {name: params[:query]}).uniq
-      end
-      ####### this is the old search #######
-
-
     if params[:native].present?
-
       #@users = @filtered_users_2.where(users: {address: params[:city]).uniq
 
       @native_users = User.joins(languages: :language_skills)
@@ -45,8 +31,9 @@ class ProfilesController < ApplicationController
       @learning_users = User.joins(languages: :language_skills)
             .where(languages: {name: params[:learning]})
             .where('language_skills.score = 6')
-      @users = @native_users & @learning_users
-
+      #@users_nearby = User.near([current_user.latitude,current_user.longitude],20)
+      @users_nearby = User.near(params[:city],20)
+      @users = @native_users & @learning_users & @users_nearby
 
       # search for users, where params[:native] == current_users learning language
       # filter for users, where params[:learning] == current_users native language

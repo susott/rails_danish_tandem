@@ -3,21 +3,21 @@
   <div class="container">
     <div class="row">
       <div class="col-xs-12 col-sm-10 col-sm-offset-1">
-                  <form class="form-inline">
+        <form class="form-inline">
 
-        <%= form_tag profiles_path, method: :get do %>
-            <%= label_tag 'Teach' %>
-            <%= text_field_tag :native, params[:native], class: "form-rounded form-control mb-2 mr-sm-2 mb-sm-0", value: @native %>
-            <%= label_tag 'Learn' %>
-            <%= text_field_tag :learning, params[:learning], class: "form-rounded form-control mb-2 mr-sm-2 mb-sm-0", value: @learning %>
-             <%= label_tag 'Around' %>
-            <%= text_field_tag :city, params[:city], class: "form-rounded form-control mb-2 mr-sm-2 mb-sm-0", value: @city %>
-            <%= button_tag(type: "submit", class: "btn btn-search") do %>
-              <i class="fas fa-search"></i>
-            <% end %>
+          <%= form_tag profiles_path, method: :get do %>
+              <%= label_tag 'Teach' %>
+              <%= text_field_tag :native, params[:native], class: "form-rounded form-control mb-2 mr-sm-2 mb-sm-0", value: @native %>
+              <%= label_tag 'Learn' %>
+              <%= text_field_tag :learning, params[:learning], class: "form-rounded form-control mb-2 mr-sm-2 mb-sm-0", value: @learning %>
+               <%= label_tag 'Around' %>
+              <%= text_field_tag :city, params[:city], class: "form-rounded form-control mb-2 mr-sm-2 mb-sm-0", value: @city %>
+              <%= button_tag(type: "submit", class: "btn btn-search") do %>
+                <i class="fas fa-search"></i>
+              <% end %>
 
-        <% end %>
-                  </form>
+          <% end %>
+        </form>
 
       </div>
     </div> <!-- end row -->
