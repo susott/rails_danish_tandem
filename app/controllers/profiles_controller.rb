@@ -1,7 +1,7 @@
 class ProfilesController < ApplicationController
   def index
 
-    # default fill for search fields
+  #### default fill for search fields
     if params[:native].present?
       @native = params[:native]
     else
@@ -21,9 +21,13 @@ class ProfilesController < ApplicationController
     else
       @city = current_user.address
     end
+  ####
 
     if params[:native].present?
-      #@users = @filtered_users_2.where(users: {address: params[:city]).uniq
+
+      # search for users, where params[:native] == current_users learning language
+      # filter for users, where params[:learning] == current_users native language
+      # filter for users around that city (10km?)
 
       @native_users = User.joins(languages: :language_skills)
             .where(languages: {name: params[:native]})
@@ -35,15 +39,15 @@ class ProfilesController < ApplicationController
       @users_nearby = User.near(params[:city],20)
       @users = @native_users & @learning_users & @users_nearby
 
-      # search for users, where params[:native] == current_users learning language
-      # filter for users, where params[:learning] == current_users native language
-      # filter for users around that city (10km?)
-
     else
       @users = User.all
     end
 
-    @users_geolocation = User.where.not(latitude: nil, longitude: nil)
+    #@users_geolocation = User.where.not(latitude: nil, longitude: nil)
+    @users_have_geo = User.joins(languages: :language_skills)
+          .where.not(latitude: nil, longitude: nil)
+    @users_geolocation = @users_have_geo & @users
+
     @markers = @users_geolocation.map do |user|
       {
         lat: user.latitude,
@@ -55,24 +59,37 @@ class ProfilesController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @native_languages = @user.language_skills.where('score > 5').map(&:language)
-    @learn_skills = @user.language_skills.where('score < 6')
+    define_profile
   end
 
   def update
     @user = User.find(params[:id])
     @user.update(profile_update_params)
-    # render :my_dashboard
     redirect_to('/my_dashboard')
   end
 
   def my_dashboard
     @user = current_user
-    @native_languages = @user.language_skills.where('score > 5').map(&:language)
-    @learn_skills = @user.language_skills.where('score < 6')
+    define_profile
   end
 
   def profile_update_params
     params.require(:user).permit(:photo, :photo_background)
+  end
+
+  private
+
+  def define_profile
+    @native_languages = @user.language_skills.where('score > 5').map(&:language)
+    @learn_skills = @user.language_skills.where('score < 6')
+
+    if @user.latitude
+    @markers =
+      [{
+        lat: @user.latitude,
+        lng: @user.longitude
+        # infoWindow: { content: render_to_string(partial: "/flats/map_box", locals: { flat: flat }) }
+      }]
+    end
   end
 end
