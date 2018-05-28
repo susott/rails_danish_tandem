@@ -36,7 +36,27 @@ class ProfilesController < ApplicationController
       #@users_nearby = User.near([current_user.latitude,current_user.longitude],20)
       @users_nearby = User.near(params[:city],20)
       @users = @native_users & @learning_users & @users_nearby
-      raise
+
+      # advanced search options
+
+      # males = @users.where(gender: 'male') if params[:male]
+      # females = @users.where(gender: 'female') if params[:female]
+      # others = @users.where(gender: 'other') if params[:other]
+
+      # array of hashes
+      males = @users.select { |user| user.gender == "male"} if params[:male]
+      females = @users.select { |user| user.gender == "female"} if params[:female]
+      others = @users.select { |user| user.gender == "other"} if params[:other]
+
+      if params[:male] || params[:female] || params[:other]
+        @users = (males.to_a + females.to_a + others.to_a).uniq
+      end
+
+
+
+
+
+
     else
       @users = User.all
     end

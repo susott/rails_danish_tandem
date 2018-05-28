@@ -37,22 +37,11 @@
               <%= select_tag :max_age, options_for_select(( 10..110).step(10)), {include_blank: true} %>
             </div> <!-- end form group -->
 
-
               <%= text_field_tag :name, params[:name], class: "form-rounded form-control mb-2 mr-sm-2 mb-sm-0", placeholder: "Name" %>
 
             <div class="form-group">
               <%= text_field_tag :keywords, params[:keywords], class: "form-rounded form-control mb-2 mr-sm-2 mb-sm-0", placeholder: "Text search" %>
             </div> <!-- end form group -->
-
-
-
-            <%# dedication %>
-
-            <%#, multiple: true %>
-
-
-
-
 
           <% end %>
         </form>
