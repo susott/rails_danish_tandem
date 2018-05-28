@@ -60,7 +60,7 @@ class ProfilesController < ApplicationController
     @user = User.find(params[:id])
     @user.update(profile_update_params)
     # render :my_dashboard
-    redirect_to('/me')
+    redirect_to('/my_dashboard')
   end
 
   def my_dashboard
