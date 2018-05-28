@@ -1,12 +1,13 @@
 class ProfilesController < ApplicationController
   def index
-
     if params[:query].present?
       if current_user.native_dane
         @filtered_users = User.joins(languages: :language_skills)
             .where(languages: {name: params[:query]}).where('language_skills.score > 5')
         @users = @filtered_users.where(users: {address: current_user.address}).uniq
+
       else  # danish-learner
+
           @users = User.joins(languages: :language_skills).where(native_dane: true)
               .where(users: {address: current_user.address})
               .where(languages: {name: params[:query]}).uniq

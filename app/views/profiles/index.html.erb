@@ -2,10 +2,10 @@
   <div class="container">
     <div class="row">
       <div class="col-xs-12 col-sm-6 col-sm-offset-3">
-        <%#= form_tag profiles_path, method: :get do %>
-          <%#= text_field_tag :query, params[:query], class: "form-control form-rounded",
+        <%= form_tag profiles_path, method: :get do %>
+          <%= text_field_tag :query, params[:query], class: "form-control form-rounded",
           placeholder: "Language" %>
-        <%# end %>
+        <% end %>
       </div>
     </div> <!-- end row -->
   </div> <!-- end container -->
