@@ -1,47 +1,56 @@
 class ProfilesController < ApplicationController
   def index
 
-    if params[:query].present?
-      if current_user.native_dane
-        @filtered_users = User.joins(languages: :language_skills)
-            .where(languages: {name: params[:query]}).where('language_skills.score > 5')
-        @users = @filtered_users.where(users: {address: current_user.address}).uniq
-      else  # danish-learner
-          @users = User.joins(languages: :language_skills).where(native_dane: true)
-              .where(users: {address: current_user.address})
-              .where(languages: {name: params[:query]}).uniq
-      end
+    # default fill for search fields
+    if params[:native].present?
+      @native = params[:native]
+    else
+      @native = current_user.languages.first.name
+    end
+
+    if params[:learning].present?
+      @learning = params[:learning]
+    elsif current_user.languages.find_by('language_skills.score < 5')
+      @learning = current_user.languages.find_by('language_skills.score < 5').name
+    else
+      @learning = ""
+    end
+
+    if params[:city].present?
+      @city = params[:city]
+    else
+      @city = current_user.address
+    end
+
+    if params[:native].present?
+      #@users = @filtered_users_2.where(users: {address: params[:city]).uniq
+
+      @native_users = User.joins(languages: :language_skills)
+            .where(languages: {name: params[:native]})
+            .where('language_skills.score < 6')
+      @learning_users = User.joins(languages: :language_skills)
+            .where(languages: {name: params[:learning]})
+            .where('language_skills.score = 6')
+      #@users_nearby = User.near([current_user.latitude,current_user.longitude],20)
+      @users_nearby = User.near(params[:city],20)
+      @users = @native_users & @learning_users & @users_nearby
+
+      # search for users, where params[:native] == current_users learning language
+      # filter for users, where params[:learning] == current_users native language
+      # filter for users around that city (10km?)
 
     else
       @users = User.all
     end
-      ## working, more or less, without address
 
-      # @language_i_speak_natively = Language.joins(:language_skills)
-      #    .where(language_skills: { score: 6, user_id: current_user.id}).first
-      # add validation to have only one native language
-      # @language_i_wanna_speak = Language.find_by_name(params[:query])
-      # @users = @language_i_wanna_speak.users.joins(:language_skills)
-      #    .where(language_skills: { score: 6 })
-      # @users_wanna_learn = @users.joins(languages: :language_skills)
-      #   .where("language_skills.score < 6 and language_skills.language_id = ?", @language_i_speak_natively.id).uniq
-
-      ## these are working queries:
-      # @user = User.joins(languages: :language_skills).where(languages: {name: "Italian"})
-      # @user = User.joins(languages: :language_skills).where(languages: {name: "Italian"}).where('language_skills.score > 5')
-      # @users = User.joins(languages: :language_skills).where(languages: {name: params[:query]})
-
-      @users_geolocation = User.where.not(latitude: nil, longitude: nil)
-
-      @users = current_user ? User.where.not(id: current_user.id) : User.all
-
-      @markers = @users_geolocation.map do |user|
-        {
-          lat: user.latitude,
-          lng: user.longitude#,
-          # infoWindow: { content: render_to_string(partial: "/flats/map_box", locals: { flat: flat }) }
-        }
-      end
+    @users_geolocation = User.where.not(latitude: nil, longitude: nil)
+    @markers = @users_geolocation.map do |user|
+      {
+        lat: user.latitude,
+        lng: user.longitude,
+        # infoWindow: { content: render_to_string(partial: "/flats/map_box", locals: { flat: flat }) }
+      }
+    end
   end
 
   def show

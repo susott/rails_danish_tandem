@@ -73,14 +73,11 @@ mar = User.new(name: "martin", username: "martin", age:99, gender: "male",
 mar.save
 puts "created ma"
 
+
 lskill1 = LanguageSkill.new(score: 6)
 lskill1.user = so
 lskill1.language = it
-if lskill1.save
-  puts "saved language skill 1"
-else
-  puts lskill1.errors.messages
-end
+lskill1.save
 
 lskill1 = LanguageSkill.new(score: 6)
 lskill1.user = je
@@ -132,4 +129,15 @@ lskill9 = LanguageSkill.new(score: 3)
 lskill9.user = mar
 lskill9.language = es
 lskill9.save
+puts "added language skills to users"
+
+lskill1 = LanguageSkill.new(score: 3)
+lskill1.user = so
+lskill1.language = da
+lskill1.save
+
+lskill8 = LanguageSkill.new(score: 4)
+lskill8.user = ma
+lskill8.language = da
+lskill8.save
 puts "added language skills to users"

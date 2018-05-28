@@ -1,36 +1,23 @@
-<div class="index-wrapper">
-  <div class="container">
-    <div class="row">
-      <div class="col-xs-12 col-sm-6 col-sm-offset-3">
-        <%#= form_tag profiles_path, method: :get do %>
-          <%#= text_field_tag :query, params[:query], class: "form-control form-rounded",
-          placeholder: "Language" %>
-        <%# end %>
-      </div>
-    </div> <!-- end row -->
-  </div> <!-- end container -->
-</div> <!-- end wrapper -->
-
 
 <div class="index-search-wrapper">
   <div class="container">
     <div class="row">
       <div class="col-xs-12 col-sm-10 col-sm-offset-1">
-                  <form class="form-inline">
+        <form class="form-inline">
 
-        <%= form_tag profiles_path, method: :get do %>
-            <%= label_tag 'Teach' %>
-            <%= text_field_tag :query, params[:query], class: "form-rounded form-control mb-2 mr-sm-2 mb-sm-0", placeholder: "Your native Language" %>
-            <%= label_tag 'Learn' %>
-            <%= text_field_tag :query, params[:query], class: "form-rounded form-control mb-2 mr-sm-2 mb-sm-0", placeholder: "Learning Language" %>
-             <%= label_tag 'Around' %>
-            <%= text_field_tag :query, params[:query], class: "form-rounded form-control mb-2 mr-sm-2 mb-sm-0", placeholder: "City" %>
-            <%= button_tag(type: "submit", class: "btn btn-search") do %>
-              <i class="fas fa-search"></i>
-            <% end %>
+          <%= form_tag profiles_path, method: :get do %>
+              <%= label_tag 'Teach' %>
+              <%= text_field_tag :native, params[:native], class: "form-rounded form-control mb-2 mr-sm-2 mb-sm-0", value: @native %>
+              <%= label_tag 'Learn' %>
+              <%= text_field_tag :learning, params[:learning], class: "form-rounded form-control mb-2 mr-sm-2 mb-sm-0", value: @learning %>
+               <%= label_tag 'Around' %>
+              <%= text_field_tag :city, params[:city], class: "form-rounded form-control mb-2 mr-sm-2 mb-sm-0", value: @city %>
+              <%= button_tag(type: "submit", class: "btn btn-search") do %>
+                <i class="fas fa-search"></i>
+              <% end %>
 
-        <% end %>
-                  </form>
+          <% end %>
+        </form>
 
       </div>
     </div> <!-- end row -->
