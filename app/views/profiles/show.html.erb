@@ -12,18 +12,14 @@
         <div>
           <p class="cover-content-name"><%= @user.name %></p>
           <!-- <p class="cover-content-email"><%= @user.email%></p> -->
-          <div data-toggle="modal" data-target="#uploadProfilePicture" role="button">
             <%if @user.photo? %>
-              <%= cl_image_tag @user.photo.url, class: "img-profile" %>
+              <%= cl_image_tag @user.photo.url, class: "img-profile", height: 160, width: 160, crop: :fill %>
+
             <%else %>
               <%= image_tag "profile_photo.jpg", class: "img-profile" %>
             <%end %>
-          </div>
         </div>
 
-        <div class="icon-camera">
-          <i data-toggle="modal" data-target="#uploadPictureBackground" role="button" class="fas fa-camera"></i>
-        </div>
       </div>
     </div>
   </div><!--  close row banner profile -->
@@ -88,6 +84,26 @@
       <div class="col-xs-3">
         <div class="friends-wrapper">
          <h6>Friends</h6>
+        </div>
+      </div>
+
+      <div class="col-xs-3">
+        <div class="friends-wrapper">
+          <h6>Languages</h6>
+          <ul class="list-unstyled list-spaced">
+            <% @native_languages.each do |lang| %>
+              <li><span><strong>Native:</strong>
+                 <%= lang.name %>
+              </span></li>
+            <% end %>
+
+            <% @learn_skills.each do |skill| %>
+              <li><span><strong>Learning:</strong>
+                <%= skill.language.name %>
+                <%= skill.score %>
+              </span></li>
+            <% end %>
+          </ul>
         </div>
       </div>
 

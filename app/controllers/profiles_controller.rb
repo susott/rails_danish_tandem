@@ -1,9 +1,5 @@
 class ProfilesController < ApplicationController
   def index
-    # 1. language that have score 6 = finding native language
-    # 2. find language that I am searching for
-    # 3. look for users that speak that language natively
-    # 4. find users that wanna learn my native language
 
     if params[:query].present?
       if current_user.native_dane
@@ -15,10 +11,6 @@ class ProfilesController < ApplicationController
               .where(users: {address: current_user.address})
               .where(languages: {name: params[:query]}).uniq
       end
-
-
-
-      ## working, more or less, without city
 
     else
       @users = User.all
@@ -54,6 +46,8 @@ class ProfilesController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @native_languages = @user.language_skills.where('score > 5').map(&:language)
+    @learn_skills = @user.language_skills.where('score < 6')
   end
 
   def update

@@ -25,3 +25,17 @@
     color: $red-brown;
   }
 }
+
+.btn-search {
+  background-color: $yellow;
+  opacity: 0.85;
+  color: $red-brown;
+  font-size: 1em;
+  border-color: $blue;
+  &:hover {
+    opacity: 1;
+    text-decoration: none;
+    color: $red-brown;
+  }
+
+}
