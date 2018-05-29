@@ -2,13 +2,22 @@
   margin-top: 70px;
 }
 
+.center {
+  text-align: center;
+}
 
 .index-search-wrapper {
-  margin-top: 80px;
-  background-color: $blue;
+  background: $blue;//linear-gradient($yellow, $white);
   padding: 20px;
   color: $red-brown;
+  font-size: 14px;
   text-align: center;
+  position: relative;
+}
+
+
+.index-wrapper {
+  margin-top: 20px;
 }
 
 
@@ -19,32 +28,30 @@
 
 
 .search-button {
-  padding-top: 30px;
+  padding-top: 25px;
 }
 
 .gender-div {
   padding-top: 25px;
 }
 
-.form {
-  .row {
-    margin-bottom: 20px;
-  }
+.advanced_search {
+  padding-top: 10px;
 }
 
 .basic_search {
-
-}
-
-.advanced_search {
-  padding-top: 10px;
+  margin: 0px;
+  padding: 0px;
 }
 
 #advanced-button {
   color: $red-brown;
   opacity: 1;
+  text-decoration: none;
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
   &:hover {
-    text-decoration: none;
     opacity: 0.8;
   }
 }
