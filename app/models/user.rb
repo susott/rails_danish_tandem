@@ -23,4 +23,12 @@ class User < ApplicationRecord
 
   geocoded_by :address
   after_validation :geocode, if: :will_save_change_to_address?
+
+  def last_message_with(user)
+    Message.where("(sender_id = ? and receiver_id = ?)", self.id, user.id).last.content
+  end
+
+  def last_created_at(user)
+    Message.where("(sender_id = ? and receiver_id = ?)", self.id, user.id).last.created_at
+  end
 end

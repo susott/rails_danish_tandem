@@ -1,0 +1,83 @@
+.my_messages {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  border-bottom: 1px solid rgba(220,224,244,0.4);
+  margin-bottom:10px;
+  position:relative;
+  background: linear-gradient(to right, $grey 0%, #6e8e9b 100%);
+
+}
+.my_messages:last-child {
+  border-bottom: none;
+}
+.my_messages-body {
+  flex-grow: 1;
+}
+.my_messages-name {
+  padding-left: 10px;
+  min-width: 100px;
+  color:#000000;
+}
+.my_messages-name h3 {
+  font-size: 13px;
+  margin-bottom: 0px;
+}
+.my_messages-name p {
+  font-size: 13px;
+  font-weight: lighter;
+  opacity: 0.6;
+  margin-top: 5px;
+  font-style: oblique;
+}
+.my_messages-body {
+  padding-left: 10px;
+  font-size: 13px;
+  color: $white;
+}
+.my_messages-body {
+  padding-left: 20px;
+  padding-left: 20px;
+  font-weight: lighter;
+  font-size: 13px;
+
+}
+.my_messages-body strong{
+  color: rgba(0,0,0,0.9);
+  color: rgba(0,0,0,0.9);
+}
+.my_messages-body p {
+  margin: 6px 0;
+}
+.my_messages-status {
+  font-size: 14px;
+  font-weight: bold;
+}
+.status.accepted {
+  color: $grey;
+}
+.status.declined {
+  color: red;
+}
+.status.pending {
+  color: lightgrey;
+}
+.my_messages-link{
+    position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  z-index: 2;
+  background: black;
+  opacity: 0;
+}
+
+.title-my-messages{
+  background-color: white;
+  padding-bottom: 16px;
+  padding-top: 16px;
+  border-top-left-radius: 24px;
+  border-top-right-radius: 24px;
+  margin:2px;
+}

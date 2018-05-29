@@ -1,20 +1,22 @@
 .message {
   display: flex;
   align-items: center;
-  padding: 20px;
-  border-bottom: 1px solid rgba(220,224,244,0.4);
-  background-color: wheat;
+  // padding: 15px;
+  // border-bottom: 1px solid rgba(220,224,244,0.4);
+  // background-color: wheat;
   margin-top: 2px;
+
 }
 .message:last-child {
   border-bottom: none;
 }
 .message-body {
-  flex-grow: 1;
+  // flex-grow: 1;
 }
 .message-name {
   padding-left: 10px;
   min-width: 100px;
+
 }
 .message-name h3 {
   font-size: 13px;
@@ -30,10 +32,15 @@
   padding-left: 10px;
   font-size: 13px;
   color: rgba(0,0,0,0.7);
+  background-color:wheat;
+  border-radius: 28px;
+  margin-left: 14px;
+
 }
 .message-body {
   padding-left: 20px;
   color: rgba(0,0,0,0.4);
+  padding-right: 20px;
 }
 .message-body strong{
   color: rgba(0,0,0,0.9);
@@ -43,8 +50,10 @@
   margin: 6px 0;
 }
 .message-status {
-  font-size: 14px;
+  font-size: 17px;
   font-weight: bold;
+  padding-left: 5px;
+  color: #0d0f0dbd;
 }
 .status.accepted {
   color: #04A366;
@@ -53,14 +62,51 @@
   color: red;
 }
 .status.pending {
-  color: lightgrey;
+  color: black;
 }
  .avatar-large {
-  width: 77px;
+  width: 55px;
   border-radius: 50%;
-  height: 77px;
+  height: 55px;
 }
 
 .message-wrapper{
-  margin-top:20px;
+  margin-bottom:30px;
+  background: linear-gradient(to right, $grey 0%, #6e8e9b 100%);
+  padding: 20px 20px;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+
+}
+
+.name-chat{
+  padding-left: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: white;
+  margin-top: 20px;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  text-align: center
+}
+
+ .new-message-link{
+  float: left;
+  padding-right: 10px;
+  text-decoration: none;
+  font-size:27px;
+ }
+
+ .new-message-link:hover{
+  text-decoration: none;
+ }
+
+.date-message{
+  color: $white;
+  font-size: 11px;
+  margin-bottom: 20px;
+}
+.return-message-link{
+  float: right;
+  padding-right: 15px;
 }

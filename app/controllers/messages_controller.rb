@@ -6,6 +6,7 @@ class MessagesController < ApplicationController
     # @other_user = User.find(params)
     # Figure out ActiveRecord query to get all messages from both these users, ordered by created at
     @messages =  Message.where("(sender_id = ? and receiver_id = ?) OR (sender_id = ? and receiver_id = ?)", @me.id, @other_user.id, @other_user.id, @me.id )
+
   end
 
   def create
@@ -22,6 +23,15 @@ class MessagesController < ApplicationController
   def new
     @user = User.find(params[:user_id])
     @message = Message.new
+  end
+
+  def my_messages
+    @me = current_user
+    @my_conversations = User.joins(:received_messages).joins(:sent_messages)
+                  .where("messages.sender_id = #{current_user.id} OR messages.receiver_id = #{current_user.id}")
+                  .distinct.reject { |user| user ==current_user }
+    # @my_messages = Message.where("receiver_id = ?", @me.id)
+
   end
 
   private
