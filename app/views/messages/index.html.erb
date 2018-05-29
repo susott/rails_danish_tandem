@@ -3,47 +3,68 @@
   <div class="row">
     <div class="col-xs-3"></div>
     <div class="col-xs-6">
+
       <div class="name-chat">
-        <%= @other_user.name %>
-        <%= link_to new_user_message_path(@other_user) do %>
-          <i class="fas fa-plus-circle new-message-link"></i>
-        <% end %>
+        <%=link_to @other_user.name, profile_path(@other_user), class: "other_user_name" %>
         <%= link_to my_messages_path do  %>
-        <i class="fas fa-undo-alt return-message-link"></i>
+          <i class="fas fa-undo-alt return-message-link"></i>
         <% end %>
       </div>
+
       <div class="message-wrapper">
         <% @messages.each do |message| %>
+          <%if message.sender_id == @me.id %>
+            <div class="message">
+              <%if message.sender.photo? %>
+                <%= cl_image_tag (message.sender.photo), class: "avatar-large" %>
+              <%else %>
+                <%= image_tag "profile_photo.jpg", class: "avatar-large" %>
+              <%end %>
+              <div class="message-body">
+                <p><%= message.content %> </p>
+              </div>
+
+              <div class="message-status">
+                <i class="fas fa-check"></i>
+              </div>
+            </div>
+            <p class="date-message"><%= message.created_at.strftime("%A, %b %d") %></p>
+          <%else %>
           <div class="message">
+            <div class="message-status">
+              <i class="fas fa-check"></i>
+            </div>
+
+            <div class="message-body">
+              <p><%= message.content %></p>
+            </div>
             <%if message.sender.photo? %>
               <%= cl_image_tag (message.sender.photo), class: "avatar-large" %>
             <%else %>
               <%= image_tag "profile_photo.jpg", class: "avatar-large" %>
             <%end %>
-            <!-- <div class="message-name">
-              <h3><%#= message.sender.name %></h3>
-              <p><%#= message.created_at.strftime("%A, %b %d") %></p>
-            </div> -->
-            <div class="message-body">
-              <p>
-                <%= message.content %>
-              </p>
-            </div>
-
-            <div class="message-status">
-              <i class="fas fa-check"></i>
-            </div>
           </div>
-          <p class="date-message"><%= message.created_at.strftime("%A, %b %d") %></p>
+          <p class="date-message-me"><%= message.created_at.strftime("%A, %b %d") %></p>
+          <%end%>
+        <%end %>
+      </div> <!-- close message wrapper -->
 
-        <% end %>
+      <div class="form-index-wrapper">
+        <!-- <h2 class="text-center">Send a message</h2> -->
+         <%= simple_form_for([@other_user, @empty_message]) do |f| %>
+           <div class="form-inputs">
+             <%= f.input :content,label:false, placeholder: 'send a messages', required: false, autofocus: true %>
+           </div>
+           <div class="form-actions">
+             <%= f.button :submit, "send message", class: 'btn-form-index'  %>
+           </div>
+         <% end %>
       </div>
     </div>
+
   <div class="col-xs-3"></div>
-  </div>
-
-</div>
-
+  </div><!-- close row -->
+</div> <!-- close container -->
 
 
 

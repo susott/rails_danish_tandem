@@ -1,9 +1,6 @@
 .message {
   display: flex;
   align-items: center;
-  // padding: 15px;
-  // border-bottom: 1px solid rgba(220,224,244,0.4);
-  // background-color: wheat;
   margin-top: 2px;
 
 }
@@ -68,15 +65,12 @@
   width: 55px;
   border-radius: 50%;
   height: 55px;
+  margin-left: 10px;
 }
 
 .message-wrapper{
-  margin-bottom:30px;
   background: linear-gradient(to right, $grey 0%, #6e8e9b 100%);
   padding: 20px 20px;
-  border-bottom-left-radius: 20px;
-  border-bottom-right-radius: 20px;
-
 }
 
 .name-chat{
@@ -87,7 +81,7 @@
   margin-top: 20px;
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
-  text-align: center
+  text-align: center;
 }
 
  .new-message-link{
@@ -106,7 +100,63 @@
   font-size: 11px;
   margin-bottom: 20px;
 }
+.date-message-me{
+  color: $white;
+  font-size: 11px;
+  margin-bottom: 20px;
+  text-align:right;
+}
 .return-message-link{
   float: right;
   padding-right: 15px;
 }
+
+.form-index-wrapper{
+  margin: 0px;
+  border: #0fa3b1;
+  opacity: 0.6;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.6;
+  color: $red-brown;
+}
+.form-control{
+  border-color: black;
+  color:black;
+
+}
+.form-control:focus{
+  border-color: black
+
+}
+
+.form-wrapper {
+  h2 {
+    text-align: center;
+    color: $red-brown;
+    padding-top: 20px;
+  }
+
+}
+
+.btn-form-index{
+  background-color: $red-brown;
+  color: $white;
+  font-weight: 100;
+  width: 100%;
+  height: 51px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+.btn-form-index:hover{
+color:$white;
+}
+.other_user_name:hover{
+  text-decoration:none;
+
+}
+
+
+
+
+
