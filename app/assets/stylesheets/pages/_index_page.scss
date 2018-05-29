@@ -1,3 +1,61 @@
 #map {
   margin-top: 70px;
 }
+
+.center {
+  text-align: center;
+}
+
+.index-search-wrapper {
+  background: $blue;//linear-gradient($yellow, $white);
+  padding: 20px;
+  color: $red-brown;
+  font-size: 14px;
+  text-align: center;
+  position: relative;
+}
+
+
+.index-wrapper {
+  margin-top: 20px;
+}
+
+
+
+.search-column {
+  margin: 10px;
+}
+
+
+.search-button {
+  padding-top: 25px;
+}
+
+.gender-div {
+  padding-top: 25px;
+}
+
+.advanced_search {
+  padding-top: 10px;
+}
+
+.basic_search {
+  margin: 0px;
+  padding: 0px;
+}
+
+#advanced-button {
+  color: $red-brown;
+  opacity: 1;
+  text-decoration: none;
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
+.hide {
+    display: none;
+}
