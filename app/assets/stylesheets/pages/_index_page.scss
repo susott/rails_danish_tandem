@@ -1,3 +1,50 @@
 #map {
   margin-top: 70px;
 }
+
+
+.index-search-wrapper {
+  margin-top: 80px;
+  background-color: $blue;
+  padding: 20px;
+  color: $red-brown;
+  text-align: center;
+}
+
+
+
+.search-column {
+  margin: 10px;
+}
+
+
+.search-button {
+  padding-top: 30px;
+}
+
+.gender-div {
+  padding-top: 25px;
+}
+
+.form {
+  .row {
+    margin-bottom: 20px;
+  }
+}
+
+.basic_search {
+  padding-bottom: 15px;
+}
+
+.advanced_search {
+  padding-top: 10px;
+}
+
+#advanced-button {
+  color: $red-brown;
+  opacity: 1;
+  &:hover {
+    text-decoration: none;
+    opacity: 0.8;
+  }
+}

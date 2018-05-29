@@ -124,7 +124,7 @@ class ProfilesController < ApplicationController
     if params[:native].present?
       @native = params[:native]
     else
-      @native = current_user.languages.first.name
+      @native = current_user.languages.find_by('language_skills.score = 6').name
     end
 
     if params[:learning].present?
