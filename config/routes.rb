@@ -18,7 +18,7 @@ Rails.application.routes.draw do
 
   resources :users, except: [ :new, :create, :edit, :update, :destroy, :index, :show ] do
     resources :language_skills, only: [:create, :update, :destroy]
-    resources :messages, only: [:create, :new, :index]
+    resources :messages, only: [:create, :new, :index, :my_messages]
   end
 
   root to: 'pages#home'
@@ -26,5 +26,6 @@ Rails.application.routes.draw do
   get "pages/design", to: "pages#design"
   get "pages/about", to: "pages#about"
 
+  get "my_messages", to: "messages#my_messages"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

@@ -15,6 +15,7 @@
         <% end %>
 
       </div>
+      <%= link_to("back to #{@user.name} profile", profile_path(@user), class: "send-message-link") %>
     </div>
     <div class="col-xs-2"></div>
   </div> <!-- close row -->

@@ -1,0 +1,26 @@
+
+ <% @my_messages.each do |message| %>
+        <div>
+          <div class="my_messages">
+            <%if message.sender.photo? %>
+                <%= cl_image_tag (message.sender.photo), class: "avatar-large" %>
+              <%else %>
+                <%= image_tag "profile_photo.jpg", class: "avatar-large" %>
+            <%end%>
+            <div class="my_messages-name">
+              <h3><%= message.sender.name %></h3>
+              <p class="date-my_messages"><%= message.created_at.strftime("%A, %b %d") %></p>
+            </div>
+            <div class="my_messages-body">
+              <p><%= message.content %></p>
+            </div>
+            <div class="my_messages-status">
+              <p class="status pending"><%= message.read %></p>
+            </div>
+            <%= link_to("",  user_messages_path(message.sender.id), class: "card-link") %>
+
+
+          </div>
+        </div>
+      <% end %>
+
