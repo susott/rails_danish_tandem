@@ -1,9 +1,8 @@
 class ProfilesController < ApplicationController
   def index
     default_field_fill
-    if params[:native].present?
+    if params[:native].present? || params[:learning].present? || params[:city].present?
       basic_search
-
     else
       @users = User.all
     end
@@ -57,15 +56,42 @@ class ProfilesController < ApplicationController
     # filter for users, where params[:learning] == current_users native language
     # filter for users around that city (10km?)
 
-    @native_users = User.joins(languages: :language_skills)
+    if params[:native].present?
+      @native_users = User.joins(languages: :language_skills)
           .where(languages: {name: params[:native]})
-          .where('language_skills.score < 6')
-    @learning_users = User.joins(languages: :language_skills)
+          .where('language_skills.score < 6').distinct
+    end
+
+    if params[:learning].present?
+      @learning_users = User.joins(languages: :language_skills)
           .where(languages: {name: params[:learning]})
-          .where('language_skills.score = 6')
+          .where('language_skills.score = 6').distinct
     #@users_nearby = User.near([current_user.latitude,current_user.longitude],20)
-    @users_nearby = User.near(params[:city],20)
-    @users = @native_users & @learning_users & @users_nearby
+    end
+
+    if params[:city].present?
+      @users_nearby = User.near(params[:city],20)
+    end
+
+    if @native_users && @learning_users && @users_nearby
+      @users = @native_users & @learning_users & @users_nearby
+    elsif @native_users && @learning_users
+      @users = @native_users & @learning_users
+    elsif @learning_users && @users_nearby
+      @users = @learning_users & @users_nearby
+    elsif @native_users && @users_nearby
+      @users = @native_users & @users_nearby
+    elsif @native_users
+      @users = @native_users
+    elsif @learning_users
+      @users = @learning_users
+    elsif @users_nearby
+      @users = @users_nearby
+    else
+      @users = []
+    end
+
+
   end
 
   def age_search
