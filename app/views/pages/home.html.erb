@@ -2,6 +2,10 @@
   <div class="banner-content">
     <h1>Find a language friend</h1>
     <p>The language exchange site for Denmark</p>
-    <%= link_to "Sign up", new_user_registration_path, class:"btn-basic"%>
+    <% if user_signed_in? %>
+      <%= link_to "Find tandem", profiles_path, class:"btn-basic"%>
+    <% else %>
+      <%= link_to "Sign up", new_user_registration_path, class:"btn-basic"%>
+    <% end %>
   </div>
 </div>

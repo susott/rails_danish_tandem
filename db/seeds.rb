@@ -46,13 +46,13 @@ so.save
 ma = User.new(name: "Maria", username: "mar", age:26, gender: "female",
   email: "test26@gmail.com", address: "Aarhus",
   description: "I speak fairly good Danish, but there is still room for improvement. I could imagine learning danish with a tandem partner.",
-  dedication: "occassionally", password: "123456")
+  dedication: "more often", password: "123456")
 ma.save
 
 bo = User.new(name: "Bodil", username: "bo70", age: 70, gender: "female",
   email: "test70@gmail.com", address: "Vejle",
   description: "I can teach you danish and I love to learn italian",
-  dedication: "occassionally", password: "123456")
+  dedication: "once per week", password: "123456")
 bo.save
 if bo.save
   puts "created bo"
@@ -61,7 +61,7 @@ end
 je = User.new(name: "Jens", username: "jens", age:23, gender: "male",
   email: "test23@gmail.com", address: "Aarhus",
   description: "I come from Sweden and I'd love to learn Danish from a native speaker",
-  dedication: "occassionally", password: "123456")
+  dedication: "once per week", password: "123456")
 je.save
 puts "created je"
 
@@ -141,3 +141,8 @@ lskill8.user = ma
 lskill8.language = da
 lskill8.save
 puts "added language skills to users"
+
+lskill2 = LanguageSkill.new(score: 2)
+lskill2.user = bo
+lskill2.language = it
+lskill2.save

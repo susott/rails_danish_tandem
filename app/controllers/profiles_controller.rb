@@ -3,15 +3,16 @@ class ProfilesController < ApplicationController
     default_field_fill
     if params[:native].present?
       basic_search
+
+    else
+      @users = User.all
+    end
+    geo_options
       gender_search
       age_search
       dedication_search
       name_search
       keyword_search
-    else
-      @users = User.all
-    end
-    geo_options
   end
 
 
