@@ -2,11 +2,16 @@
   <div class="row">
     <div class="col-xs-2"></div>
     <div class="col-xs-8">
-      <p class=" title-my-messages text-center"> my messages </p>
-
+      <div class=" title-my-messages ">
+        <p> my messages </p>
+        <%= link_to dashboard_path do  %>
+          <i class="fas fa-undo-alt icon-my-messages"></i>
+        <% end %>
+      </div>
       <% @my_conversations.each do |user| %>
         <%#= link_to user.name, user_messages_path(user)  %>
           <div class="my_messages">
+
             <%if user.photo? %>
                 <%= cl_image_tag (user.photo), class: "avatar-large" %>
               <%else %>
