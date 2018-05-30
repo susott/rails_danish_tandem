@@ -70,7 +70,12 @@ class ProfilesController < ApplicationController
     end
 
     if params[:city].present?
-      @users_nearby = User.near(params[:city],20)
+      if params[:around].present?
+        radius = params[:around].to_i
+        @users_nearby = User.near(params[:city],radius)
+      else
+        @users_nearby = User.near(params[:city],20)
+      end
     end
 
     if @native_users && @learning_users && @users_nearby
