@@ -82,7 +82,7 @@ cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
 proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
   dedication: "occassionally", password: "123456")
 mar.photo = Rails.root.join("app/assets/images/portrait_male.jpeg").open
-mar.photo_background = Rails.root.join("app/assets/images/background_family.jpeg").open
+mar.photo_background = Rails.root.join("app/assets/images/background_copenhagen.jpeg").open
 mar.save
 puts "created ma"
 
@@ -135,6 +135,16 @@ lskill6 = LanguageSkill.new(score: 6)
 lskill6.user = je
 lskill6.language = sw
 lskill6.save
+
+lskill14 = LanguageSkill.new(score: 6)
+lskill14.user = jo
+lskill14.language = da
+lskill14.save
+
+lskill15 = LanguageSkill.new(score: 2)
+lskill15.user = jo
+lskill15.language = ru
+lskill15.save
 
 
 lskill7 = LanguageSkill.new(score: 5)
