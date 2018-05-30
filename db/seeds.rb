@@ -1,10 +1,3 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
 da = Language.create(name: "Danish")
 en = Language.create(name: "English")
 fr = Language.create(name: "French")
@@ -36,42 +29,76 @@ no = Language.create(name: "Norwegan")
 puts "created languages"
 
 
-
-so = User.new(name: "Susanne", username: "sus", age:2, gender: "female",
+so = User.new(name: "Larissa", age:32, gender: "female",
   email: "test@gmail.com", address: "Hellerup",
-  description: "I speak fairly good Danish, but there is still room for improvement. I could imagine learning danish with a tandem partner.",
+  description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
   dedication: "occassionally", password: "123456")
+so.photo = Rails.root.join("app/assets/images/women2.jpeg").open
+so.photo_background = Rails.root.join("app/assets/images/background_nature.jpg").open
 so.save
 
 ma = User.new(name: "Maria", username: "mar", age:26, gender: "female",
   email: "test26@gmail.com", address: "Aarhus",
   description: "I speak fairly good Danish, but there is still room for improvement. I could imagine learning danish with a tandem partner.",
-  dedication: "occassionally", password: "123456")
+  dedication: "more often", password: "123456")
+ma.photo = Rails.root.join("app/assets/images/portrait_women.jpeg").open
+ma.photo_background = Rails.root.join("app/assets/images/background_flower.jpeg").open
 ma.save
 
-bo = User.new(name: "Bodil", username: "bo70", age: 70, gender: "female",
+bo = User.new(name: "Bodil", username: "bo70", age: 38, gender: "female",
   email: "test70@gmail.com", address: "Vejle",
   description: "I can teach you danish and I love to learn italian",
-  dedication: "occassionally", password: "123456")
+  dedication: "once per week", password: "123456")
+bo.photo = Rails.root.join("app/assets/images/portrait_female.jpeg").open
+bo.photo_background = Rails.root.join("app/assets/images/background_copenhagen.jpeg").open
+
 bo.save
 if bo.save
   puts "created bo"
 end
 
-je = User.new(name: "Jens", username: "jens", age:23, gender: "male",
+je = User.new(name: "Jens", username: "jens", age:50, gender: "male",
   email: "test23@gmail.com", address: "Aarhus",
   description: "I come from Sweden and I'd love to learn Danish from a native speaker",
-  dedication: "occassionally", password: "123456")
+  dedication: "once per week", password: "123456")
+je.photo = Rails.root.join("app/assets/images/portrait_man.jpeg").open
+je.photo_background = Rails.root.join("app/assets/images/background1.jpeg").open
 je.save
 puts "created je"
 
 
-mar = User.new(name: "martin", username: "martin", age:99, gender: "male",
+mar = User.new(name: "martin", username: "martin", age:24, gender: "male",
   email: "test99@gmail.com", address: "Copenhagen",
-  description: "I'm just filling in some text, but I have nothing to say",
+  description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
   dedication: "occassionally", password: "123456")
+mar.photo = Rails.root.join("app/assets/images/portrait_male.jpeg").open
+mar.photo_background = Rails.root.join("app/assets/images/background_family.jpeg").open
 mar.save
 puts "created ma"
+
+jo = User.new(name: "joachim", age: 37, gender: "male",
+  email: "test100@gmail.com", address: "Frederiksberg",
+  description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+  dedication: "once per month", password: "123456")
+jo.photo = Rails.root.join("app/assets/images/portrait_giraffe.jpeg").open
+jo.photo_background = Rails.root.join("app/assets/images/background_family.jpeg").open
+jo.save
+puts "created jo"
 
 
 lskill1 = LanguageSkill.new(score: 6)
@@ -141,3 +168,8 @@ lskill8.user = ma
 lskill8.language = da
 lskill8.save
 puts "added language skills to users"
+
+lskill2 = LanguageSkill.new(score: 2)
+lskill2.user = bo
+lskill2.language = it
+lskill2.save

@@ -2,6 +2,7 @@ class MessagesController < ApplicationController
   def index
     @me = current_user
     @other_user = User.find(params[:user_id])
+    @empty_message = Message.new
     # Find the other user through params
     # @other_user = User.find(params)
     # Figure out ActiveRecord query to get all messages from both these users, ordered by created at
@@ -27,10 +28,14 @@ class MessagesController < ApplicationController
 
   def my_messages
     @me = current_user
-    @my_conversations = User.joins(:received_messages).joins(:sent_messages)
-                  .where("messages.sender_id = #{current_user.id} OR messages.receiver_id = #{current_user.id}")
-                  .distinct.reject { |user| user ==current_user }
+    # @my_conversations = User.joins(:received_messages).joins(:sent_messages).where("messages.sender_id = #{current_user.id} OR
+    #                       messages.receiver_id = #{current_user.id}")
+                  # .distinct.reject { |user| user ==current_user }
     # @my_messages = Message.where("receiver_id = ?", @me.id)
+    users_id_conversation = Message.where("sender_id = ? OR receiver_id = ?", @me.id, @me.id)
+    .flat_map{|message| [message.sender_id, message.receiver_id]}.uniq
+
+    @my_conversations = User.find(users_id_conversation).reject { |user| user == current_user }
 
   end
 
