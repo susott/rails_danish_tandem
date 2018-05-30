@@ -24,7 +24,7 @@ class ProfilesController < ApplicationController
   def update
     @user = User.find(params[:id])
     @user.update(profile_update_params)
-    redirect_to('/my_dashboard')
+    redirect_to dashboard_path
   end
 
   def my_dashboard
