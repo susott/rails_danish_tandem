@@ -18,17 +18,22 @@ class ProfilesController < ApplicationController
   def show
     @user = User.find(params[:id])
     define_profile
+
   end
 
   def update
     @user = User.find(params[:id])
     @user.update(profile_update_params)
-    redirect_to('/my_dashboard')
+    redirect_to dashboard_path
   end
 
   def my_dashboard
     @user = current_user
     define_profile
+    @my_conversations = User.joins(:received_messages).joins(:sent_messages)
+                  .where("messages.sender_id = #{current_user.id} OR
+                   messages.receiver_id = #{current_user.id}")
+                  .distinct.reject { |user| user ==current_user }
   end
 
   def profile_update_params

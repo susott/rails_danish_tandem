@@ -43,6 +43,11 @@
             <%= link_to "Edit Profile", edit_user_registration_path, class: "var-cover-link"%>
           </li>
         </div>
+        <div class="var-cover col-xs-3">
+          <li>
+            <%= link_to "Find tandem",   profiles_path, class: "var-cover-link"%>
+          </li>
+        </div>
 
 
       </ul>
@@ -81,7 +86,20 @@
       </div>
       <div class="col-xs-3">
         <div class="friends-wrapper">
-         <h6>Friends</h6>
+         <h6 class="text-center">Friends</h6>
+         <div class="my-friends">
+            <% @my_conversations.each do |friend| %>
+              <%= link_to profile_path(friend) do %>
+              <%  if friend.photo? %>
+                <%= cl_image_tag friend.photo.url, class: "avatar-large-profile" %>
+              <%else %>
+                <%= image_tag "profile_photo.jpg", class: "avatar-large-profile" %>
+              <%end %>
+              <% end %>
+              <%end%>
+          </div>
+
+
         </div>
       </div>
       <div class="col-xs-3">
@@ -103,7 +121,7 @@
             <% end %>
 
           </ul>
-          <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#addLanugage">Add Language</button>
+          <i class="fas fa-plus-circle new-lenguage-link" data-toggle="modal" data-target="#addLanugage"></i>
         </div>
       </div>
 
