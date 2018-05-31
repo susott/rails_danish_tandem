@@ -34,7 +34,7 @@ other_pictures = ["portrait_male.jpeg","portrait_man.jpeg","portrait_female.jpeg
 background_pictures = ["background_copenhagen.jpeg","background_flower.jpeg","background_nature.jpeg","background_nature.jpg","background_family"]
 
 
-20.times do
+150.times do
   gender_var = ["male","female","other"].sample
   name = Faker::FunnyName.name.split.first
 
@@ -79,7 +79,7 @@ background_pictures = ["background_copenhagen.jpeg","background_flower.jpeg","ba
 
   lskill1 = LanguageSkill.new(score: 6)
   lskill1.user = newuser
-  native_lang = [da,da,da,da,da,da,da,da,fr,es,ru,pt,de,sw,it,nl,th,en].sample
+  native_lang = [da,da,da,da,da,da,da,da,fr,es,ru,de,sw,it,en].sample
   # native_lang = [da,en].sample
   lskill1.language = native_lang
   if lskill1.save
@@ -91,7 +91,7 @@ background_pictures = ["background_copenhagen.jpeg","background_flower.jpeg","ba
     newscore = rand(1..5)
     lskill2 = LanguageSkill.new(score: newscore)
     lskill2.user = newuser
-    lskill2.language = [fr,es,ru,pt,de,sw,it,nl,th,en].sample
+    lskill2.language = [fr,es,ru,de,sw,it,en].sample
     lskill2.save
   else
     newscore = rand(1..5)
