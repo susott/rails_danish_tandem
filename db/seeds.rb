@@ -122,7 +122,7 @@ cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
 proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
   dedication: "occassionally", password: "123456")
 
-so.photo = Rails.root.join("app/assets/images/women2.jpeg").open
+so.photo = Rails.root.join("app/assets/images/woman2.jpeg").open
 so.photo_background = Rails.root.join("app/assets/images/background_nature.jpg").open
 so.save
 
@@ -130,7 +130,7 @@ so.save
 #   email: "test26@gmail.com", address: "Aarhus",
 #   description: "I speak fairly good Danish, but there is still room for improvement. I could imagine learning danish with a tandem partner.",
 #   dedication: "more often", password: "123456")
-# ma.photo = Rails.root.join("app/assets/images/portrait_women.jpeg").open
+# ma.photo = Rails.root.join("app/assets/images/portrait_woman.jpeg").open
 # ma.photo_background = Rails.root.join("app/assets/images/background_flower.jpeg").open
 # ma.save
 
