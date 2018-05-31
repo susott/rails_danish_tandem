@@ -11,15 +11,19 @@
       <%end %>
         <div>
           <p class="cover-content-name"><%= @user.name %></p>
-          <!-- <p class="cover-content-email"><%= @user.email%></p> -->
+          <p class="cover-content-email"><%= @user.email%></p>
+          <div data-toggle="modal" data-target="#uploadProfilePicture" role="button">
             <%if @user.photo? %>
-              <%= cl_image_tag @user.photo.url, class: "img-profile", height: 160, width: 160, crop: :fill %>
-
+              <%= cl_image_tag @user.photo.url, class: "img-profile" %>
             <%else %>
               <%= image_tag "profile_photo.jpg", class: "img-profile" %>
             <%end %>
+          </div>
         </div>
 
+        <div class="icon-camera">
+          <i data-toggle="modal" data-target="#uploadPictureBackground" role="button" class="fas fa-camera"></i>
+        </div>
       </div>
     </div>
   </div><!--  close row banner profile -->
@@ -30,30 +34,29 @@
         <div class="var-cover-filler col-xs-1"></div>
         <div class="var-cover col-xs-3">
           <li>
-          <!-- <a  class="var-cover-link" href="#"> Send a message</a> -->
-          <%= link_to("Send a message", new_user_message_path(@user), class: "var-cover-link") %>
+          <%= link_to("Message",my_messages_path, class: "var-cover-link") %>
+
         </li>
         </div>
         <div class="var-cover col-xs-3">
           <li>
-          <a class="var-cover-link" href="#"> Send a friend request</a>
+            <%= link_to "Edit Profile", edit_user_registration_path, class: "var-cover-link"%>
           </li>
         </div>
         <div class="var-cover col-xs-3">
           <li>
-          <a class="var-cover-link" href="#"> Send a review</a>
+            <%= link_to "Find tandem",   profiles_path, class: "var-cover-link"%>
           </li>
         </div>
 
 
       </ul>
     </div><!-- close row var profile -->
-    </div>
 
     <!-- ...................BODY SECTION..................... -->
-       <div class="dashboard-grid">
-        <!-- PROFILE INFO -->
-        <div class="dashboard-item personal-date-user dashboard-about">
+    <div class="row">
+      <div class="col-xs-3">
+        <div class="personal-date-user">
           <h5 class="text-center">About</h5 >
             <ul class="list-unstyled list-spaced">
               <li>
@@ -65,58 +68,56 @@
               <li>
                 <span><strong>Address:</strong> <%= @user.address %></span>
               </li>
-              <!-- <li>
-                <span><strong>Last login:</strong> <%#= @user.last_sign_in_at.strftime("%A, %b %d") %></span>
-              </li> -->
+              <li>
+                <span><strong>Last login:</strong> <%= @user.last_sign_in_at.strftime("%A, %b %d") %></span>
+              </li>
               <li>
                 <span><strong>Dedication</strong> <%= @user.dedication %></span>
               </li>
             </ul>
         </div>
-        <!-- PROFILE INFO -->
 
-        <!-- MAP -->
-        <div class="map-wrapper dashboard-map dashboard-item">
+
+        <div class="map-wrapper">
           <div
             id="map"
             margin-top = "20px";
             style="width: 100%;
-            height: 100%;"
-            data-markers="<%= @markers.to_json %>"></div>
-        </div> <!-- end map wrapper -->
-        <!-- MAP -->
-
-
-        <!-- DESCRIPTION  -->
-        <div class="dashboard-item description-wrapper dashboard-description">
-          <div>
-            <h5 class="text-center"> Description</h5>
-            <p class="text-justify"><%= @user.description %></p>
+            height: 200px;"
+            data-markers="<%= @markers.to_json %>"
+          >
           </div>
+        </div> <!-- end map wrapper -->
 
+
+      </div>
+      <div class="col-xs-6">
+        <div class="description-wrapper">
+          <h5 class="text-center"> Description</h5>
+          <p><%= @user.description %></p>
 
         </div>
-        <!-- DESCRIPTION -->
-
-        <!-- FRIENDS -->
-        <div class="dashboard-item friends-wrapper dashboard-friends">
+      </div>
+      <div class="col-xs-3">
+        <div class="friends-wrapper">
          <h5 class="text-center">Friends</h5>
          <div class="my-friends">
             <% @my_conversations.each do |friend| %>
               <%= link_to profile_path(friend) do %>
-                <%  if friend.photo? %>
-                  <%= cl_image_tag friend.photo.url, class: "avatar-large-profile" %>
-                <% else %>
-                  <%= image_tag "profile_photo.jpg", class: "avatar-large-profile" %>
-                <%end %>
+              <%  if friend.photo? %>
+                <%= cl_image_tag friend.photo.url, class: "avatar-large-profile" %>
+              <%else %>
+                <%= image_tag "profile_photo.jpg", class: "avatar-large-profile" %>
+              <%end %>
               <% end %>
-            <% end %>
+              <%end%>
           </div>
-        </div>
-        <!-- FRIENDS -->
 
-        <!-- LANGUAGES -->
-        <div class="dashboard-item friends-wrapper dashboard-languages">
+
+        </div>
+      </div>
+      <div class="col-xs-3">
+        <div class="friends-wrapper">
           <h5>Languages</h5>
           <ul class="list-unstyled list-spaced">
             <% @native_languages.each do |lang| %>
@@ -136,10 +137,32 @@
           </ul>
           <i class="fas fa-plus-circle new-lenguage-link" data-toggle="modal" data-target="#addLanugage"></i>
         </div>
-        <!-- LANGUAGES -->
-    </div> <!-- close dashboard grid -->
+      </div>
 
+    </div> <!-- close row body profile -->
+
+    <!-- div class="col-xs-12 col-sm-6 col-sm-offset-3">
+        <div class="map-wrapper">
+          <div
+            id="map"
+            style="width: 100%;
+            height: 400px;"
+            data-markers="<%#= @markers.to_json %>"
+          >
+          </div>
+        </div> <!#-- end map wrapper -->
+      <!-- </div> -->  <!-- end col -->
+
+
+  </div> <!--- close var cover profile -->
 </div> <!-- close container -->
+
+
+
+
+
+
+
 
 
 
@@ -183,4 +206,28 @@
   </div>
 </div>
 <% end %>
+
+<!-- FORM ADD LANGUAGES-->
+
+<%= simple_form_for(@user, url: language_skills_create_path, method: :get) do |f| %>
+<div class="modal fade" id="addLanugage" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Add language</h4>
+      </div>
+      <div class="modal-body">
+          <%= f.association :languages, required: true %>
+          <%= f.association :language_skills, as: :radio_buttons, collection: [[1, "Beginner"],[2, "Beginner-Intermediate"],[3, "Intermediate"],[4,"Good"],[5,"Fluent"],[6,"Native"]],
+            label_method: :second, value_method: :first  %>
+
+          <%= f.button :submit %>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>
+
+
 
