@@ -43,7 +43,7 @@
 }
 
 .var-cover-profile{
-  background-color: #a944422b;
+  background-color: $red-brown;
   height: 51px;
 }
 
@@ -56,7 +56,7 @@
 }
 .var-cover{
     height: 51px;
-    border-right: 1px solid #e6b1ae;
+    border-right: 1px solid #d77570;
     text-align: center;
     font-size: 14px;
     /* font-weight: 600; */
@@ -68,6 +68,7 @@
     white-space: nowrap;
     height: 51px;
 
+
 }
 
 .var-cover-link {
@@ -77,6 +78,7 @@
   right: 0;
   width: 100%;
   z-index: 2;
+  color: #2e1d1d !important;
 
 }
 .var-cover-link:hover {
@@ -97,22 +99,27 @@
 }
 
 .personal-date-user{
-  background-color: #a944422b;
+  background-color: #fff8f0;
   font-size: 15px;
   padding-left: 16px;
   padding-bottom: 11px;
   padding-top: 4px;
   margin-top: 6px;
   line-height: 29px;
+  color: #2e1d1d !important;
+  opacity:0.8;
   }
 .description-wrapper, .friends-wrapper{
-  background-color:#a944422b;
+  background-color:#fff8f0;
   padding-left: 17px;
   padding-bottom: 11px;
   padding-right: 14px;
   padding-top: 4px;
   margin-top: 7px;
-font-size:17px
+font-size:17px;
+color:  #2e1d1d !important;
+opacity:0.8;
+
 }
 
 .avatar-large-profile{
@@ -122,4 +129,10 @@ font-size:17px
   border-radius: 50%;
   margin-left: 10px;
   margin-bottom: 11px;
+}
+
+#map{
+   margin-top : 0px !important;
+   margin-bottom: 0px !important;
+  border-radius: 5px;
 }

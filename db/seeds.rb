@@ -1,3 +1,7 @@
+LanguageSkill.destroy_all
+Language.destroy_all
+User.destroy_all
+
 da = Language.create(name: "Danish")
 en = Language.create(name: "English")
 fr = Language.create(name: "French")
@@ -34,7 +38,7 @@ other_pictures = ["portrait_male.jpeg","portrait_man.jpeg","portrait_female.jpeg
 background_pictures = ["background_copenhagen.jpeg","background_flower.jpeg","background_nature.jpeg","background_nature.jpg","background_family"]
 
 
-150.times do
+120.times do
   gender_var = ["male","female","other"].sample
   name = Faker::FunnyName.name.split.first
 
@@ -117,6 +121,7 @@ consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
 cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
 proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
   dedication: "occassionally", password: "123456")
+
 so.photo = Rails.root.join("app/assets/images/women2.jpeg").open
 so.photo_background = Rails.root.join("app/assets/images/background_nature.jpg").open
 so.save
@@ -128,6 +133,7 @@ so.save
 # ma.photo = Rails.root.join("app/assets/images/portrait_women.jpeg").open
 # ma.photo_background = Rails.root.join("app/assets/images/background_flower.jpeg").open
 # ma.save
+
 
 bo = User.new(name: "Bodil", username: "bo70", age: 38, gender: "female",
   email: "test70@gmail.com", address: "Vejle",

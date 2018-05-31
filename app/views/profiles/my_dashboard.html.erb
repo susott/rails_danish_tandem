@@ -52,12 +52,13 @@
 
       </ul>
     </div><!-- close row var profile -->
+  </div> <!--- close var cover profile -->
 
     <!-- ...................BODY SECTION..................... -->
-    <div class="row">
-      <div class="col-xs-3">
-        <div class="personal-date-user">
-          <h5 class="text-center">About</h5>
+    <div class="dashboard-grid">
+        <!-- PROFILE INFO -->
+        <div class="dashboard-item personal-date-user dashboard-about">
+          <h5 class="text-center">About</h5 >
             <ul class="list-unstyled list-spaced">
               <li>
                 <span><strong>Age:</strong> <%= @user.age %></span>
@@ -76,35 +77,50 @@
               </li>
             </ul>
         </div>
-      </div>
-      <div class="col-xs-6">
-        <div class="description-wrapper">
-          <h5 class="text-center"> Description</h5>
-          <p><%= @user.description %></p>
+        <!-- PROFILE INFO -->
+
+        <!-- MAP -->
+        <div class="map-wrapper dashboard-map dashboard-item">
+          <div
+            id="map"
+            margin-top = "20px";
+            style="width: 100%;
+            height: 100%;"
+            data-markers="<%= @markers.to_json %>"></div>
+        </div> <!-- end map wrapper -->
+        <!-- MAP -->
+
+
+        <!-- DESCRIPTION  -->
+        <div class="dashboard-item description-wrapper dashboard-description">
+          <div>
+            <h5 class="text-center"> Description</h5>
+            <p class="text-justify"><%= @user.description %></p>
+          </div>
 
         </div>
-      </div>
-      <div class="col-xs-3">
-        <div class="friends-wrapper">
-         <h6 class="text-center">Friends</h6>
+        <!-- DESCRIPTION -->
+
+        <!-- FRIENDS -->
+        <div class="dashboard-item friends-wrapper dashboard-friends">
+         <h5 class="text-center">Friends</h5>
          <div class="my-friends">
             <% @my_conversations.each do |friend| %>
               <%= link_to profile_path(friend) do %>
-              <%  if friend.photo? %>
-                <%= cl_image_tag friend.photo.url, class: "avatar-large-profile" %>
-              <%else %>
-                <%= image_tag "profile_photo.jpg", class: "avatar-large-profile" %>
-              <%end %>
+                <%  if friend.photo? %>
+                  <%= cl_image_tag friend.photo.url, class: "avatar-large-profile" %>
+                <% else %>
+                  <%= image_tag "profile_photo.jpg", class: "avatar-large-profile" %>
+                <%end %>
               <% end %>
-              <%end%>
+            <% end %>
           </div>
-
-
         </div>
-      </div>
-      <div class="col-xs-3">
-        <div class="friends-wrapper">
-          <h6>Languages</h6>
+        <!-- FRIENDS -->
+
+        <!-- LANGUAGES -->
+        <div class="dashboard-item friends-wrapper dashboard-languages">
+          <h5>Languages</h5>
           <ul class="list-unstyled list-spaced">
             <% @native_languages.each do |lang| %>
               <li><span><strong>Native:</strong>
@@ -123,24 +139,9 @@
           </ul>
           <i class="fas fa-plus-circle new-lenguage-link" data-toggle="modal" data-target="#addLanugage"></i>
         </div>
-      </div>
+        <!-- LANGUAGES -->
 
-    </div> <!-- close row body profile -->
-
-    <div class="col-xs-12 col-sm-6 col-sm-offset-3">
-        <div class="map-wrapper">
-          <div
-            id="map"
-            style="width: 100%;
-            height: 400px;"
-            data-markers="<%= @markers.to_json %>"
-          >
-          </div>
-        </div> <!-- end map wrapper -->
-      </div> <!-- end col -->
-
-
-  </div> <!--- close var cover profile -->
+    </div> <!-- close dashboard grid -->
 </div> <!-- close container -->
 
 
