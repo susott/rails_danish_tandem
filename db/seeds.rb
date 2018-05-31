@@ -1,3 +1,10 @@
+puts 'Cleaning database...'
+LanguageSkill.destroy_all
+Language.destroy_all
+User.destroy_all
+
+
+
 da = Language.create(name: "Danish")
 en = Language.create(name: "English")
 fr = Language.create(name: "French")
@@ -34,7 +41,7 @@ other_pictures = ["portrait_male.jpeg","portrait_man.jpeg","portrait_female.jpeg
 background_pictures = ["background_copenhagen.jpeg","background_flower.jpeg","background_nature.jpeg","background_nature.jpg","background_family"]
 
 
-150.times do
+5.times do
   gender_var = ["male","female","other"].sample
   name = Faker::FunnyName.name.split.first
 

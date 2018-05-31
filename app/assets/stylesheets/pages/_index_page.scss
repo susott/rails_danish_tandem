@@ -7,12 +7,13 @@
 }
 
 .index-search-wrapper {
-  background: $blue;//linear-gradient($yellow, $white);
+  background: $grey;//linear-gradient($yellow, $white);
   padding: 20px;
   color: $red-brown;
   font-size: 14px;
   text-align: center;
   position: relative;
+  opacity:0.7;
 }
 
 
@@ -60,3 +61,6 @@
 .hide {
     display: none;
 }
+ .alert-user-empty{
+  color: #0d0b0bad;
+ }
