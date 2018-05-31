@@ -181,20 +181,20 @@ bo.save
 # puts "created jo"
 
 
-lskill1 = LanguageSkill.new(score: 6)
-lskill1.user = so
-lskill1.language = it
-lskill1.save
+lskill155 = LanguageSkill.new(score: 6)
+lskill155.user = so
+lskill155.language = it
+lskill155.save
 
 # lskill1 = LanguageSkill.new(score: 6)
 # lskill1.user = je
 # lskill1.language = da
 # lskill1.save
 
-lskill2 = LanguageSkill.new(score: 6)
-lskill2.user = bo
-lskill2.language = da
-lskill2.save
+lskill255 = LanguageSkill.new(score: 6)
+lskill255.user = bo
+lskill255.language = da
+lskill255.save
 
 # lskill3 = LanguageSkill.new(score: 6)
 # lskill3.user = mar
@@ -248,10 +248,10 @@ lskill2.save
 # lskill9.save
 # puts "added language skills to users"
 
-lskill1 = LanguageSkill.new(score: 3)
-lskill1.user = so
-lskill1.language = da
-lskill1.save
+lskill125 = LanguageSkill.new(score: 3)
+lskill125.user = so
+lskill125.language = da
+lskill125.save
 
 # lskill8 = LanguageSkill.new(score: 4)
 # lskill8.user = ma
@@ -259,7 +259,7 @@ lskill1.save
 # lskill8.save
 # puts "added language skills to users"
 
-lskill2 = LanguageSkill.new(score: 2)
-lskill2.user = bo
-lskill2.language = it
-lskill2.save
+lskill225 = LanguageSkill.new(score: 2)
+lskill225.user = bo
+lskill225.language = it
+lskill225.save
