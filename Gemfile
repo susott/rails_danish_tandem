@@ -14,6 +14,7 @@ gem 'rails', '5.1.6'
 gem 'redis'
 gem 'rubocop'
 gem "geocoder"
+gem "faker"
 
 
 gem 'autoprefixer-rails'

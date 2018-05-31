@@ -28,6 +28,19 @@ no = Language.create(name: "Norwegan")
 
 puts "created languages"
 
+5.times do
+  User.new(
+    name: Faker::FunnyName.name
+    age: [1..100].sample
+    gender: ["male","female","other"].sample
+  )
+end
+
+
+
+
+
+
 
 so = User.new(name: "Larissa", age:32, gender: "female",
   email: "test@gmail.com", address: "Hellerup",

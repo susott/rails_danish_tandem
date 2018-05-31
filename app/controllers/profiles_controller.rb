@@ -63,13 +63,13 @@ class ProfilesController < ApplicationController
 
     if params[:native].present?
       @native_users = User.joins(languages: :language_skills)
-          .where(languages: {name: params[:native]})
+          .where(languages: {name: params[:native].capitalize})
           .where('language_skills.score < 6').distinct
     end
 
     if params[:learning].present?
       @learning_users = User.joins(languages: :language_skills)
-          .where(languages: {name: params[:learning]})
+          .where(languages: {name: params[:learning].capitalize})
           .where('language_skills.score = 6').distinct
     #@users_nearby = User.near([current_user.latitude,current_user.longitude],20)
     end
