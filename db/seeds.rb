@@ -1,6 +1,3 @@
-LanguageSkill.destroy_all
-Language.destroy_all
-User.destroy_all
 
 da = Language.create(name: "Danish")
 en = Language.create(name: "English")
@@ -36,6 +33,7 @@ female_pictures = ["portrait_female.jpeg","portrait_woman.jpeg","woman2.jpeg"]
 male_pictures = ["portrait_male.jpeg","portrait_man.jpeg"]
 other_pictures = ["portrait_male.jpeg","portrait_man.jpeg","portrait_female.jpeg","portrait_woman.jpeg","portrait_giraffe.jpeg"]
 background_pictures = ["background_copenhagen.jpeg","background_flower.jpeg","background_nature.jpeg","background_nature.jpg","background_family"]
+
 
 
 120.times do

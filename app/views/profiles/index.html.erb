@@ -1,113 +1,125 @@
-<div class="center">
-  <h1>Find a tandem partner!</h1>
-</div> <!-- end center -->
+<div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url(<%= image_path("copenhagen.jpeg") %>);">
+  <div class="banner-content">
+
+    <div class="center">
+      <h1>Find a tandem partner!</h1>
+    </div> <!-- end center -->
+
+    <div class="index-search-wrapper">
+      <div class="container">
+        <a href="#" id="advanced-button">Advanced search</a>
+        <form class="form ">
+
+          <%= form_tag profiles_path, method: :get do %>
+            <div class="basic_search">
+              <div class="form-group row">
+                <div class="col-xs-12 col-sm-3">
+                  <div class="form-group">
+                    <%= label_tag 'Teach' %>
+                    <%= text_field_tag :native, params[:native], class: "form-control form-control-search mb-2 mr-sm-2 mb-sm-0", value: @native %>
+                  </div> <!-- end form group -->
+                </div> <!-- end col -->
+                <div class="col-xs-12 col-sm-3">
+                  <div class="form-group">
+                    <%= label_tag 'Learn' %>
+                    <%= text_field_tag :learning, params[:learning], class: "form-control form-control-search mb-2 mr-sm-2 mb-sm-0", value: @learning %>
+                  </div> <!-- end form group -->
+                </div> <!-- end col -->
+                <div class="col-xs-12 col-sm-3">
+                  <div class="form-group">
+                    <%= label_tag 'Around' %>
+                    <%= text_field_tag :city, params[:city], class: "form-control form-control-search mb-2 mr-sm-2 mb-sm-0", value: @city %>
+                  </div> <!-- end form group -->
+                </div> <!-- end col -->
+
+                <div class="col-xs-12 col-sm-2">
+                  <div class="form-group search-button">
+                    <%= button_tag(type: "submit", class: "form-control form-control-search mb-2 mr-sm-2 mb-sm-0 btn btn-search") do %>
+                      Search <i class="fas fa-search"></i>
+                    <% end %>
+                  </div> <!-- end form group -->
+                </div> <!-- end col -->
+              </div> <!-- end first row -->
+            </div>  <!-- end basic_search -->
 
 
-<div class="index-search-wrapper">
-  <div class="container">
-    <a href="#" id="advanced-button">Advanced search</a>
-    <form class="form ">
+            <div class="advanced_search hide" id="advanced_search">
+              <div class="form-group row">
 
-      <%= form_tag profiles_path, method: :get do %>
-        <div class="basic_search">
-          <div class="form-group row">
-            <div class="col-xs-12 col-sm-3">
-              <div class="form-group">
-                <%= label_tag 'Teach' %>
-                <%= text_field_tag :native, params[:native], class: "form-control form-control-search mb-2 mr-sm-2 mb-sm-0", value: @native %>
-              </div> <!-- end form group -->
-            </div> <!-- end col -->
-            <div class="col-xs-12 col-sm-3">
-              <div class="form-group">
-                <%= label_tag 'Learn' %>
-                <%= text_field_tag :learning, params[:learning], class: "form-control form-control-search mb-2 mr-sm-2 mb-sm-0", value: @learning %>
-              </div> <!-- end form group -->
-            </div> <!-- end col -->
-            <div class="col-xs-12 col-sm-3">
-              <div class="form-group">
-                <%= label_tag 'Around' %>
-                <%= text_field_tag :city, params[:city], class: "form-control form-control-search mb-2 mr-sm-2 mb-sm-0", value: @city %>
-              </div> <!-- end form group -->
-            </div> <!-- end col -->
+                <div class="col-xs-12 col-sm-2 col-sm-offset-2">
+                  <div class="form-group">
+                    <%= label_tag(:dedication, "Dedication") %>
+                    <%= select_tag :dedication, options_for_select( ["all","occassionally", "once per month", "once per week", "more often"]) %>
+                  </div> <!-- end form group -->
+                </div> <!-- end col -->
 
-            <div class="col-xs-12 col-sm-2">
-              <div class="form-group search-button">
-                <%= button_tag(type: "submit", class: "form-control form-control-search mb-2 mr-sm-2 mb-sm-0 btn btn-search") do %>
-                  Search <i class="fas fa-search"></i>
-                <% end %>
-              </div> <!-- end form group -->
-            </div> <!-- end col -->
-          </div> <!-- end first row -->
-        </div>  <!-- end basic_search -->
+                <div class="col-xs-12 col-sm-1">
+                  <div class="form-group">
+                    <%= label_tag(:min_age, "Age from") %>
+                    <%= select_tag :min_age, options_for_select(( 10..100).step(10)), {include_blank: true} %>
+                  </div>
+                </div> <!-- end col -->
 
+                <div class="col-xs-12 col-sm-1">
+                  <div class="form-group">
+                    <%= label_tag(:max_age, "Age to") %>
+                    <%= select_tag :max_age, options_for_select(( 10..110).step(10)), {include_blank: true} %>
+                  </div> <!-- end form group -->
+                </div> <!-- end col -->
 
-        <div class="advanced_search hide" id="advanced_search">
-          <div class="form-group row">
+                <div class="col-xs-12 col-sm-1">
+                  <div class="form-group">
+                    <%= label_tag(:around, "Radius") %>
+                    <%= select_tag :around, options_for_select(( 10..100).step(10),20) %>
+                  </div> <!-- end form group -->
+                </div> <!-- end col -->
 
-            <div class="col-xs-12 col-sm-2 col-sm-offset-2">
-              <div class="form-group">
-                <%= label_tag(:dedication, "Dedication") %>
-                <%= select_tag :dedication, options_for_select( ["all","occassionally", "once per month", "once per week", "more often"]) %>
-              </div> <!-- end form group -->
-            </div> <!-- end col -->
+                <div class="col-xs-12 col-sm-3">
+                  <div class="form-group form-inline gender-div">
+                    <%= check_box_tag :female, params[:female] %>
+                    <%= label_tag(:female, "Female") %>
+                    <%= check_box_tag :male, params[:male] %>
+                    <%= label_tag(:male, "Male") %>
+                    <%= check_box_tag :other, params[:other] %>
+                    <%= label_tag(:other, "Other") %>
+                  </div> <!-- end form group -->
+                </div> <!-- end col -->
 
-            <div class="col-xs-12 col-sm-1">
-              <div class="form-group">
-                <%= label_tag(:min_age, "Age from") %>
-                <%= select_tag :min_age, options_for_select(( 10..100).step(10)), {include_blank: true} %>
-              </div>
-            </div> <!-- end col -->
-
-            <div class="col-xs-12 col-sm-1">
-              <div class="form-group">
-                <%= label_tag(:max_age, "Age to") %>
-                <%= select_tag :max_age, options_for_select(( 10..110).step(10)), {include_blank: true} %>
-              </div> <!-- end form group -->
-            </div> <!-- end col -->
-
-            <div class="col-xs-12 col-sm-1">
-              <div class="form-group">
-                <%= label_tag(:around, "Radius") %>
-                <%= select_tag :around, options_for_select(( 10..100).step(10),20) %>
-              </div> <!-- end form group -->
-            </div> <!-- end col -->
-
-            <div class="col-xs-12 col-sm-3">
-              <div class="form-group form-inline gender-div">
-                <%= check_box_tag :female, params[:female] %>
-                <%= label_tag(:female, "Female") %>
-                <%= check_box_tag :male, params[:male] %>
-                <%= label_tag(:male, "Male") %>
-                <%= check_box_tag :other, params[:other] %>
-                <%= label_tag(:other, "Other") %>
-              </div> <!-- end form group -->
-            </div> <!-- end col -->
-
-          </div> <!-- end second row -->
-          <div class="form-group row">
+              </div> <!-- end second row -->
+              <div class="form-group row">
 
 
-            <div class="col-xs-12 col-sm-4 col-sm-offset-1">
-              <div class="form-group">
-                <%= label_tag "Name" %>
-                <%= text_field_tag :name, params[:name], class: "form-control form-control-search mb-2 mr-sm-2 mb-sm-0", placeholder: "Name" %>
-              </div> <!-- end form group -->
-            </div> <!-- end col -->
+                <div class="col-xs-12 col-sm-4 col-sm-offset-1">
+                  <div class="form-group">
+                    <%= label_tag "Name" %>
+                    <%= text_field_tag :name, params[:name], class: "form-control form-control-search mb-2 mr-sm-2 mb-sm-0", placeholder: "Name" %>
+                  </div> <!-- end form group -->
+                </div> <!-- end col -->
 
-            <div class="col-xs-12 col-sm-4 col-sm-offset-1">
-              <div class="form-group">
-                <%= label_tag "Description" %>
-                <%= text_field_tag :keywords, params[:keywords], class: "form-control form-control-search mb-2 mr-sm-2 mb-sm-0", placeholder: "Your keywords" %>
-              </div> <!-- end form group -->
-            </div> <!-- end col -->
+                <div class="col-xs-12 col-sm-4 col-sm-offset-1">
+                  <div class="form-group">
+                    <%= label_tag "Description" %>
+                    <%= text_field_tag :keywords, params[:keywords], class: "form-control form-control-search mb-2 mr-sm-2 mb-sm-0", placeholder: "Your keywords" %>
+                  </div> <!-- end form group -->
+                </div> <!-- end col -->
 
-          </div> <!-- end third row -->
-        </div> <!-- end advanced search -->
+              </div> <!-- end third row -->
+            </div> <!-- end advanced search -->
 
-       <% end %> <!-- end form tag -->
-    </form>
-  </div> <!-- end container -->
-</div> <!-- end wrapper -->
+           <% end %> <!-- end form tag -->
+        </form>
+      </div> <!-- end container -->
+    </div> <!-- end wrapper -->
+  </div>
+</div>
+
+
+
+
+
+
+
+
 
 
 
@@ -115,12 +127,13 @@
 <!-- ########## -->
 <!-- Show users -->
 <!-- ########## -->
-
-<% if @users.empty? %>
-  <h3> Sorry, we couldn't find any matching tandem partner for you. </h3>
-<%= link_to "Try again", profiles_path, class: "btn-basic" %>
-
-<% else %>
+<div class="container-cards">
+  <% if @users.empty? %>
+<div class=" alert-user-empty alert alert-danger" role="alert">
+ <h3> Sorry, we couldn't find any matching tandem partner for you. </h3>
+  <%= link_to "Try again", profiles_path, class: "alert-link" %>
+</div>
+  <% else %>
   <div class="index-wrapper">
     <div class="container">
       <div class="row">
@@ -157,21 +170,28 @@
         </div>
       <% end %>
         </div> <!-- end card -->
-
-
-          </div> <!-- end card -->
-
+       </div> <!-- end card -->
         </div> <!-- end column -->
       <% end %> <!-- end iteration users -->
-
-
       </div> <!-- end row -->
     </div> <!-- end container -->
   </div> <!-- end wrapper -->
 
-  <div
-  id="map"
-  style="width: 100%;
-  height: 600px;"
-  data-markers="<%= @markers.to_json %>"
-  ></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <div
+        id="map"
+        style="width: 100%;
+        height: 600px;"
+        data-markers="<%= @markers.to_json %>"
+        ></div>
+
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+
