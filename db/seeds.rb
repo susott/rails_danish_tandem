@@ -129,7 +129,7 @@ ma = User.new(name: "Maria", username: "mar", age:26, gender: "female",
   email: "test26@gmail.com", address: "Aarhus",
   description: "I speak fairly good Danish, but there is still room for improvement. I could imagine learning danish with a tandem partner.",
   dedication: "more often", password: "123456")
-ma.photo = Rails.root.join("app/assets/images/portrait_women.jpeg").open
+ma.photo = Rails.root.join("app/assets/images/portrait_woman.jpeg").open
 ma.photo_background = Rails.root.join("app/assets/images/background_flower.jpeg").open
 ma.save
 
@@ -184,25 +184,25 @@ jo.save
 puts "created jo"
 
 
-lskill1 = LanguageSkill.new(score: 6)
-lskill1.user = so
-lskill1.language = it
-lskill1.save
+lskill46 = LanguageSkill.new(score: 6)
+lskill46.user = so
+lskill46.language = it
+lskill46.save
 
-lskill1 = LanguageSkill.new(score: 6)
-lskill1.user = je
-lskill1.language = da
-lskill1.save
+lskill47 = LanguageSkill.new(score: 6)
+lskill47.user = je
+lskill47.language = da
+lskill47.save
 
-lskill2 = LanguageSkill.new(score: 6)
-lskill2.user = bo
-lskill2.language = da
-lskill2.save
+lskill48 = LanguageSkill.new(score: 6)
+lskill48.user = bo
+lskill48.language = da
+lskill48.save
 
-lskill3 = LanguageSkill.new(score: 6)
-lskill3.user = mar
-lskill3.language = it
-lskill3.save
+lskill49 = LanguageSkill.new(score: 6)
+lskill49.user = mar
+lskill49.language = it
+lskill49.save
 
 lskill4 = LanguageSkill.new(score: 6)
 lskill4.user = ma
@@ -251,10 +251,10 @@ lskill9.language = es
 lskill9.save
 puts "added language skills to users"
 
-lskill1 = LanguageSkill.new(score: 3)
-lskill1.user = so
-lskill1.language = da
-lskill1.save
+lskill34 = LanguageSkill.new(score: 3)
+lskill34.user = so
+lskill34.language = da
+lskill34.save
 
 lskill8 = LanguageSkill.new(score: 4)
 lskill8.user = ma
@@ -262,7 +262,7 @@ lskill8.language = da
 lskill8.save
 puts "added language skills to users"
 
-lskill2 = LanguageSkill.new(score: 2)
-lskill2.user = bo
-lskill2.language = it
-lskill2.save
+lskill35 = LanguageSkill.new(score: 2)
+lskill35.user = bo
+lskill35.language = it
+lskill35.save
