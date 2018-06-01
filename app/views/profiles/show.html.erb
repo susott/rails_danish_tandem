@@ -98,6 +98,38 @@
         </div>
         <!-- DESCRIPTION -->
 
+        <!-- LANGUAGES -->
+        <div class="dashboard-item friends-wrapper dashboard-languages">
+          <h5>Languages</h5>
+          <ul class="list-unstyled list-spaced">
+            <li><em>Native:</em></li>
+            <% @native_languages.each do |lang| %>
+              <li><span>
+                <%= lang.name %> &nbsp;
+                <% 5.times do %>
+                  <span class="blue-stars"><i class="fas fa-star"></i></span>
+                <% end %>
+              </span></li>
+            <% end %>
+            <br>
+
+            <li><em>Learning:</em></li>
+            <% @learn_skills.each do |skill| %>
+              <li><span>
+                <%= skill.language.name %> &nbsp;
+                <% skill.score.to_i.times do %>
+                  <span class="blue-stars"><i class="fas fa-star"></i></span>
+                <% end %>
+                <% (5-skill.score.to_i).times do %>
+                  <span class="black-stars"><i class="fas fa-star"></i></span>
+                <% end %>
+              </span></li>
+            <% end %>
+
+          </ul>
+        </div>
+        <!-- LANGUAGES -->
+
         <!-- FRIENDS -->
         <div class="dashboard-item friends-wrapper dashboard-friends">
          <h5 class="text-center">Friends</h5>
@@ -114,73 +146,6 @@
           </div>
         </div>
         <!-- FRIENDS -->
-
-        <!-- LANGUAGES -->
-        <div class="dashboard-item friends-wrapper dashboard-languages">
-          <h5>Languages</h5>
-          <ul class="list-unstyled list-spaced">
-            <% @native_languages.each do |lang| %>
-              <li><span><strong>Native:</strong>
-                 <%= lang.name %>
-              </span></li>
-            <% end %>
-
-            <% @learn_skills.each do |skill| %>
-              <li><span><strong>Learning:</strong>
-                <%= skill.language.name %>
-                <%= skill.score %>
-
-              </span></li>
-            <% end %>
-
-          </ul>
-          <i class="fas fa-plus-circle new-lenguage-link" data-toggle="modal" data-target="#addLanugage"></i>
-        </div>
-        <!-- LANGUAGES -->
     </div> <!-- close dashboard grid -->
 
 </div> <!-- close container -->
-
-
-
-<!-- FORM UPLOAD PROFILE PICTURE-->
-<%= simple_form_for(@user, url: profile_path(@user.id), method: :put) do |f| %>
-<div class="modal fade" id="uploadProfilePicture" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel"><%= f.input :photo  %></h4>
-      </div>
-      <div class="modal-body">
-          <%= f.input :photo_cache, as: :hidden %>
-          <%= f.button :submit %>
-          <!-- [...] -->
-
-      </div>
-    </div>
-  </div>
-</div>
-<% end %>
-
-<!-- FORM UPLOAD BACKGROUND PICTURE-->
-
-<%= simple_form_for(@user, url: profile_path(@user.id), method: :put) do |f| %>
-<div class="modal fade" id="uploadPictureBackground" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel"><%= f.input :photo_background  %></h4>
-      </div>
-      <div class="modal-body">
-          <%= f.input :photo_background_cache, as: :hidden %>
-          <%= f.button :submit %>
-          <!-- [...] -->
-
-      </div>
-    </div>
-  </div>
-</div>
-<% end %>
-
