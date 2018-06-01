@@ -36,7 +36,7 @@ background_pictures = ["background_copenhagen.jpeg","background_flower.jpeg","ba
 
 
 
-120.times do
+200.times do
   gender_var = ["male","female","other"].sample
   name = Faker::FunnyName.name.split.first
 
