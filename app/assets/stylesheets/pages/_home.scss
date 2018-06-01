@@ -1,6 +1,5 @@
 // Specific CSS for your home-page
 
-
 html, body {
   height: 100%;
   margin: 0;
@@ -14,4 +13,34 @@ body {
 
 main {
   flex: 1;
+}
+
+
+.btn-home {
+  padding: 16px 135px;
+  border-radius: 12px;
+  background-color: #9e2b25;
+  opacity: 0.8;
+  color: #fff8f0;
+  font-size: 30px;
+  font-weight: 200;
+}
+.btn-home:hover{
+  opacity:0.9;
+  text-decoration: none;
+  color:$white;
+}
+
+.banner {
+    color: white;
+    text-align: center;
+    height: calc(70vh - 70px);
+    background-size: cover !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.title-home{
+  margin-bottom: 20px;
+  margin-top: 28px;
 }

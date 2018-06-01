@@ -3,9 +3,9 @@
     <h1>Find a language friend</h1>
     <p>The language exchange site for Denmark</p>
     <% if user_signed_in? %>
-      <%= link_to "Find tandem", profiles_path, class:"btn-basic"%>
+      <%= link_to "Find tandem", profiles_path, class: "btn-home"%>
     <% else %>
-      <%= link_to "Sign up", new_user_registration_path, class:"btn-basic"%>
+      <%= link_to "Sign up", new_user_registration_path, class: "btn-basic"%>
     <% end %>
   </div>
 </div>
@@ -14,9 +14,13 @@
 <div class="index-wrapper">
   <div class="container">
     <div class="row">
+      <p>
+
+      </p>
+      <h1 class="title-home text-center" id="typedjs-header" data-usernames="<%= @users.map(&:name).to_json %>"><span id="banner-typed-text"></span></h1>
+
       <% @users.each do |user| %>
         <div class="col-xs-12 col-sm-6 col-lg-4">
-
           <% if user.photo_background? %>
             <div class="card" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url(<%= cl_image_path(user.photo_background, :crop=>"fill") %>);">
           <% else %>
