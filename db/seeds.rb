@@ -1,9 +1,3 @@
-puts 'Cleaning database...'
-LanguageSkill.destroy_all
-Language.destroy_all
-User.destroy_all
-
-
 
 da = Language.create(name: "Danish")
 en = Language.create(name: "English")
@@ -41,7 +35,8 @@ other_pictures = ["portrait_male.jpeg","portrait_man.jpeg","portrait_female.jpeg
 background_pictures = ["background_copenhagen.jpeg","background_flower.jpeg","background_nature.jpeg","background_nature.jpg","background_family"]
 
 
-5.times do
+
+120.times do
   gender_var = ["male","female","other"].sample
   name = Faker::FunnyName.name.split.first
 
@@ -115,38 +110,37 @@ puts "Created random fake users"
 
 
 
-# so = User.new(name: "Larissa", age:32, gender: "female",
-#   email: "test@gmail.com", address: "Hellerup",
-#   description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-# tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-# quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-# consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-# cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-# proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-#   dedication: "occassionally", password: "123456")
-# so.photo = Rails.root.join("app/assets/images/women2.jpeg").open
-# so.photo_background = Rails.root.join("app/assets/images/background_nature.jpg").open
-# so.save
+so = User.new(name: "Larissa", age:32, gender: "female",
+  email: "test@gmail.com", address: "Hellerup",
+  description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+  dedication: "occassionally", password: "123456")
+
+so.photo = Rails.root.join("app/assets/images/woman2.jpeg").open
+so.photo_background = Rails.root.join("app/assets/images/background_nature.jpg").open
+so.save
 
 # ma = User.new(name: "Maria", username: "mar", age:26, gender: "female",
 #   email: "test26@gmail.com", address: "Aarhus",
 #   description: "I speak fairly good Danish, but there is still room for improvement. I could imagine learning danish with a tandem partner.",
 #   dedication: "more often", password: "123456")
-# ma.photo = Rails.root.join("app/assets/images/portrait_women.jpeg").open
+# ma.photo = Rails.root.join("app/assets/images/portrait_woman.jpeg").open
 # ma.photo_background = Rails.root.join("app/assets/images/background_flower.jpeg").open
 # ma.save
 
-# bo = User.new(name: "Bodil", username: "bo70", age: 38, gender: "female",
-#   email: "test70@gmail.com", address: "Vejle",
-#   description: "I can teach you danish and I love to learn italian",
-#   dedication: "once per week", password: "123456")
-# bo.photo = Rails.root.join("app/assets/images/portrait_female.jpeg").open
-# bo.photo_background = Rails.root.join("app/assets/images/background_copenhagen.jpeg").open
 
-# bo.save
-# if bo.save
-#   puts "created bo"
-# end
+bo = User.new(name: "Bodil", username: "bo70", age: 38, gender: "female",
+  email: "test70@gmail.com", address: "Vejle",
+  description: "I can teach you danish and I love to learn italian",
+  dedication: "once per week", password: "123456")
+bo.photo = Rails.root.join("app/assets/images/portrait_female.jpeg").open
+bo.photo_background = Rails.root.join("app/assets/images/background_copenhagen.jpeg").open
+
+bo.save
 
 # je = User.new(name: "Jens", username: "jens", age:50, gender: "male",
 #   email: "test23@gmail.com", address: "Aarhus",
@@ -187,20 +181,20 @@ puts "Created random fake users"
 # puts "created jo"
 
 
-# lskill1 = LanguageSkill.new(score: 6)
-# lskill1.user = so
-# lskill1.language = it
-# lskill1.save
+lskill155 = LanguageSkill.new(score: 6)
+lskill155.user = so
+lskill155.language = it
+lskill155.save
 
 # lskill1 = LanguageSkill.new(score: 6)
 # lskill1.user = je
 # lskill1.language = da
 # lskill1.save
 
-# lskill2 = LanguageSkill.new(score: 6)
-# lskill2.user = bo
-# lskill2.language = da
-# lskill2.save
+lskill255 = LanguageSkill.new(score: 6)
+lskill255.user = bo
+lskill255.language = da
+lskill255.save
 
 # lskill3 = LanguageSkill.new(score: 6)
 # lskill3.user = mar
@@ -254,10 +248,10 @@ puts "Created random fake users"
 # lskill9.save
 # puts "added language skills to users"
 
-# lskill1 = LanguageSkill.new(score: 3)
-# lskill1.user = so
-# lskill1.language = da
-# lskill1.save
+lskill125 = LanguageSkill.new(score: 3)
+lskill125.user = so
+lskill125.language = da
+lskill125.save
 
 # lskill8 = LanguageSkill.new(score: 4)
 # lskill8.user = ma
@@ -265,7 +259,7 @@ puts "Created random fake users"
 # lskill8.save
 # puts "added language skills to users"
 
-# lskill2 = LanguageSkill.new(score: 2)
-# lskill2.user = bo
-# lskill2.language = it
-# lskill2.save
+lskill225 = LanguageSkill.new(score: 2)
+lskill225.user = bo
+lskill225.language = it
+lskill225.save

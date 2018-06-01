@@ -1,18 +1,17 @@
 class ProfilesController < ApplicationController
   def index
+    @users = User.all
     default_field_fill
     if params[:native].present? || params[:learning].present? || params[:city].present?
       basic_search
-    else
-      @users = User.all
     end
     geo_options
-      gender_search
-      age_search
-      dedication_search
-      name_search
-      keyword_search
-  end
+    gender_search
+    age_search
+    dedication_search
+    name_search
+    keyword_search
+end
 
 
   def show
@@ -133,7 +132,7 @@ class ProfilesController < ApplicationController
 
   def dedication_search
     # ["occassionally", "once per month", "once per week", "more often"]
-    if params[:dedication] != "all"
+      unless params[:dedication] == "all" || params[:dedication].nil?
       @users = @users.select do |user|
         user.dedication == params[:dedication]
       end
