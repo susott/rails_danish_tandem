@@ -122,17 +122,27 @@
         <div class="dashboard-item friends-wrapper dashboard-languages">
           <h5>Languages</h5>
           <ul class="list-unstyled list-spaced">
+            <li><strong>Native:</strong></li>
             <% @native_languages.each do |lang| %>
-              <li><span><strong>Native:</strong>
-                 <%= lang.name %>
+              <li><span>
+                <%= lang.name %> &nbsp;
+                <% 5.times do %>
+                  <span class="blue-stars"><i class="fas fa-star"></i></span>
+                <% end %>
               </span></li>
             <% end %>
+            <br>
 
+            <li><strong>Learning:</strong></li>
             <% @learn_skills.each do |skill| %>
-              <li><span><strong>Learning:</strong>
-                <%= skill.language.name %>
-                <%= skill.score %>
-
+              <li><span>
+                <%= skill.language.name %> &nbsp;
+                <% skill.score.to_i.times do %>
+                  <span class="blue-stars"><i class="fas fa-star"></i></span>
+                <% end %>
+                <% (5-skill.score.to_i).times do %>
+                  <span class="black-stars"><i class="fas fa-star"></i></span>
+                <% end %>
               </span></li>
             <% end %>
 
