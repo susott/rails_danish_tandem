@@ -40,8 +40,11 @@
               </p>
             </div>
 
-
-            <%= link_to("", new_user_registration_path, class: "card-link") %>
+            <% if user_signed_in? %>
+            <%= link_to "", profiles_path, class: "card-link"%>
+            <% else %>
+              <%= link_to("", new_user_registration_path, class: "card-link") %>
+            <% end %>
 
             </div> <!-- end card -->
 
